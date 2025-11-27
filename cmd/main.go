@@ -2,6 +2,7 @@ package main
 
 import (	
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 	"fmt"
 
 	"app/go-fb/internal/home"
@@ -11,7 +12,9 @@ import (
 func main(){
 	start()
 	app := fiber.New()
+	app.Use(recover.New())
 
+	//Handlers
 	home.NewHandlerHome(app)
 	
 	app.Listen("localhost:3031")
