@@ -1,8 +1,14 @@
 package home
 
 import (
-	"github.com/gofiber/fiber/v2"
+	//"context"
 	"fmt"
+	//"os"
+
+	"github.com/gofiber/fiber/v2"
+
+	"app/go-fb/views/components"
+	"app/go-fb/pkg/templadapter"
 )
 
 type HandlerHome struct {
@@ -21,7 +27,12 @@ func NewHandlerHome(router fiber.Router) {
 
 func (hn *HandlerHome) home(c *fiber.Ctx) error {
 	fmt.Println("HandlerHome#home")
-	return c.SendString("HandlerHome#home")
+	component := components.Title(components.TitleProps{Message: "HandlerHome#h"})
+
+	//component.Render(context.Background(), os.Stdout) //cod in consol
+	//return c.SendString("HandlerHome#home") //page
+
+	return templadapter.Render(c, component,200)
 }
 
 func (hn *HandlerHome) errorPage(c *fiber.Ctx) error {

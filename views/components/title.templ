@@ -1,0 +1,25 @@
+package components
+
+type TitleProps struct{
+    Message string
+}
+
+//templ Title(title string) { <h3>title</h3>
+templ Title(props TitleProps) {
+    @TitleStyle()
+    <h3 class="title">{props.Message}</h3>
+}
+//font-family: "Sofia", sans-serif;// font-family: Sofia;
+templ TitleStyle() {
+    <style> 
+        .title{
+            font-width: bold;
+            margin: 2px 4px 2px 4px;           
+            text-align: center;
+            background: rgb(67, 65, 70);
+            color: rgb(237, 234, 241);            
+            /* color: var(--color-red); */            
+            /* font-size:20px; */
+        }
+    </style>    
+}
