@@ -26,5 +26,8 @@ func (hn *HandlerHome) home(c *fiber.Ctx) error {
 
 func (hn *HandlerHome) errorPage(c *fiber.Ctx) error {
 	fmt.Println("HandlerHome#errorPage")
-	return c.SendString("HandlerHome#errorPage")
+	//return c.SendString("HandlerHome#errorPage")
+	//return fiber.ErrBadGateway
+	//return fiber.NewError(400, "Its mess about my err !")
+	return fiber.NewError(fiber.StatusBadRequest, "Its mess about my err !")
 }
