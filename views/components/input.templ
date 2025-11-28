@@ -1,0 +1,53 @@
+package components
+
+
+type InputProps struct{
+    Placeholder string
+    Name string
+    Type string
+    /* Required string */   
+}
+
+templ Input(props InputProps) {
+    @InputStyle()    
+    <input placeholder={props.Placeholder}  name={props.Name} type={props.Type} class="input"/>
+}
+//font-family: "Sofia", sans-serif;// font-family: Sofia;
+templ InputStyle() {
+    <style> 
+/*         .input{
+            height: 30px;
+            padding: 4px 7px 4px 7px;
+            margin: 4px 7px 4px 7px;
+            border-radius: 10px;
+            background:  rgb(49, 50, 46);
+            color: rgb(251, 250, 245);
+            border: none;
+            width: max-content;      
+        } */
+
+        .input::placeholder{
+            color: rgb(239, 237, 203);
+        }
+
+
+        .input{
+            padding: 5px 8px;/*  6px 12px; */
+            margin: 2px;
+            background: rgb(74, 75, 79);
+            border: 1px solid rgb(121, 120, 117);
+            border-radius: 7px;
+           /*  font-size: 13px; */
+            color: rgb(227, 225, 174);
+            /* height: 46px; */
+            appearance: none;/*  сбрасывает нативные стили элемента, позволяя полностью переопределить его внешний вид с помощью CSS, но при этом сохраняет функциональность, например, для элементов форм (кнопок, чекбоксов) */
+            transition: border 0.15s ease 0s;
+            :focus{
+                outline: none; /* убирает (скрывает) контур (обводку) вокруг элемента */
+                box-shadow: none; /* отменяет или полностью убирает тень у элемента в CSS.  */
+                border-color: rgb(227, 225, 174);
+            }
+        }
+                
+    </style>    
+}

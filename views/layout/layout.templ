@@ -1,0 +1,48 @@
+package layout
+
+import (
+/*     `htmx.org`;
+ 	`htmx-ext-response-targets`;  */
+)
+
+type LayoutProps struct{
+    Title string
+    MetaDescription string
+}
+
+templ Layout(props LayoutProps) {
+   <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{props.Title}</title>
+        <link rel="stylesheet" href="/public/styles.css">
+        /* <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"> */
+
+        //--- ext
+        //1ver - doc
+/*         <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js" integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/htmx-ext-response-targets@2.0.4" integrity="sha384-T41oglUPvXLGBVyRdZsVRxNWnOOqCynaPubjUVjxhsjFTKrFJGEMm3/0KGmNQ+Pg" crossorigin="anonymous"></script> */
+        
+        //2ver curs
+/*         https://unpkg.com/:package@:version/:file
+        :packageэто имя пакета в npm
+        :versionэто версия пакета
+        :fileэто путь к файлу в пакете */
+/*         <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+        <script src="https://unpkg.com/htmx-ext-response-targets@2.0.0/response-targets.js"></script> */        
+
+        // old app
+/*         <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js" integrity="sha384-ZBXiYtYQ6hJ2Y0ZNoYuI+Nq5MqWBr+chMrS/RkXpNzQCApHEhOt2aY8EJgqwHLkJ" crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/htmx.org/dist/ext/response-targets.js"></script> */
+        //--- ext
+
+        <meta name="description" content={props.MetaDescription}/>
+    </head>
+    <body>
+        { children... }
+    </body>
+    </html> 
+}

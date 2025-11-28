@@ -1,0 +1,186 @@
+package layout
+import (
+    //"app/fi/views/components"
+)
+
+//hx-on::before-request="alert('hi!')"
+//hx-on::before-request="console.log(event)" this
+templ Navbar() {
+    @NavbarStyle()
+    <div class="navbar-container">
+    <nav class="navbar">
+        <ul class="menu">
+            <li><a href="#">Главная</a></li>
+            <li class="dropdown">
+                <a href="#">Напоминания ▾</a>
+                <ul class="dropdown-menu" id="alarm">                    
+                    <li><a
+                        hx-get="/alarm"
+                        hx-target="#form-alarm-result"
+                        ht-swap="innerHTML"
+                        hx-trigger="click"                      
+                                              
+                    >Добавить</a></li>
+                    <li><a href="/alarm">Дизайн</a></li>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Маркетинг</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Sudoku ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/sudoku">start</a></li>
+                    <li><a href="#"> 2</a></li>
+                    <li><a href="#"> 3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <script>
+        // Получаем ссылку и меню
+        //const link = document.querySelector('a');
+        
+        //const menu = document.getElementById('menu'); // Предполагается, что у вашего меню есть ID 'menu'
+
+        // Добавляем обработчик события "click"
+        //link.addEventListener('click', function() {
+        // Добавляем класс, который скрывает меню
+        //menu.classList.add('hidden');
+        //});
+    </script>
+    
+}
+
+templ NavbarStyle() {
+    <style>
+     /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-container {
+            font-family: Arial, sans-serif;
+            background-color: rgb(60, 62, 53);
+            padding: 2px;
+        }
+
+
+        /* Основное меню */
+        .navbar {
+            background: rgb(49, 50, 46);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);/* добавляет тень вокруг элемента */
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu li {
+            position: relative;
+            border-radius: 7px; /* 1nw */
+        }
+
+        .menu li a {
+            display: block;
+            padding: 15px 25px;
+            color: rgb(240, 236, 216);
+            text-decoration: none;
+            transition: background-color 0.3s ease;/* плавный переход цвета фона элемента */
+        }
+
+        .menu li a:hover {
+            background-color:  rgb(33, 34, 32);/* mn-hdr */
+            border-radius: 7px; /* 3nw */
+            border-bottom: 1px solid rgb(247, 217, 65);/* 3nw */
+        }
+
+        /* Выпадающее меню */
+/*         .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background:rgb(42, 39, 49);
+            min-width: 200px;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 0 0 5px 5px;
+            z-index: 1000;
+        } */
+        /* Более плавная анимация с задержкой */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgb(42, 39, 49);/*при наведении - фон встплывающего */            
+            min-width: 200px;
+            list-style: none;
+            opacity: 0;/*opacity: 0; делает элемент полностью прозрачным и невидимым на веб-странице, при этом он по-прежнему занимает место в потоке документа. Это противоположность opacity: 1;, который делает элемент полностью непрозрачным.  */ 
+            visibility: hidden; /*пделает элемент невидимым, но сохраняет его место в макете страницы. Это означает, что элемент все равно занимает пространство, которое было ему выделено, и не влияет на расположение других элементов */  
+            transform: translateY(-10px);/* сдвигает элемент на 10 пикселей вверх по вертикальной оси. */  
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);/*плавно анимирует все свойства элемента в течение 0.4 секунд,*/  
+            transition-delay: 0.1s;/*устанавливает задержку перед началом плавного перехода */ 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            border-radius: 0 0 8px 8px;
+            z-index: 1000;
+        } 
+
+/*         .dropdown-menu li {
+            width: 100%;
+        } */
+
+        .dropdown-menu li a {
+            color: rgb(233, 235, 226);
+            padding: 5px 7px;/* 12px 20px; */
+            border-bottom: 1px solid rgb(247, 217, 65);
+        }
+
+/*         .dropdown-menu li:last-child a {
+            border-bottom: none;
+        } */
+
+        .dropdown-menu li a:hover {
+            background-color: rgb(31, 33, 31);
+            color: rgb(244, 248, 118);
+        }
+
+        /* Показываем выпадающее меню при наведении */
+        .dropdown:hover .dropdown-menu {  /* !!!  */
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        } 
+
+/*         .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0s;
+        } */
+        /* Стрелочка для dropdown */
+/*         .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8em;
+            margin-left: 5px;
+        } */
+
+        /* CSS-правило, которое скрывает меню */
+        /* .hidden {
+        display: none; Или visibility: hidden;
+        } */
+
+
+    </style>    
+}

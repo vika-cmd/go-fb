@@ -1,0 +1,40 @@
+package components
+
+templ LiLink(href string) {
+    @LiLinkStyle()
+    
+    <li><a href={templ.SafeURL(href)}>{ children...}</a></li>
+}
+
+templ LiLinkStyle() {
+    <style>
+        .menu li {
+            position: relative;
+        }
+
+        .menu li a {
+            display: block;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu li a:hover {
+            background-color: #555;
+        }
+/* --- */
+
+
+        .li-a-link{
+            padding: 15px 20px;
+            background-color: var(--color-green);
+            color: var(--color-red);
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .li-a-link :hover{           
+            background-color: var(--color-red);     
+        }
+    </style>    
+}

@@ -1,0 +1,19 @@
+package layout
+
+templ Header() {
+    @StyleHeader()
+    <div class="header">
+        @Menu()
+        {children...}
+    </div>
+}
+
+templ StyleHeader() {
+    <style>
+    .header{        
+        text-align: center;
+        background: rgb(65, 66, 66);
+        justify-content: center;
+    }  
+    </style>    
+}

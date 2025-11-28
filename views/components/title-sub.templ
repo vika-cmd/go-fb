@@ -1,0 +1,22 @@
+package components
+
+type TitleSubProps struct{
+    Message string
+}
+
+//templ Title(title string) { <h3>title</h3>
+templ TitleSub(props TitleSubProps) {
+    @TitleSubStyle()
+    <h3 class="title-sub">{props.Message}</h3>
+}
+//font-family: "Sofia", sans-serif;// font-family: Sofia;
+templ TitleSubStyle() {
+    <style> 
+        .title-sub{            
+            margin: 2px 3px 2px 3px;            
+            font-size:16px;
+            color: rgb(200,200,200);/* var(--color-red); */
+            text-align: center;            
+        }
+    </style>    
+}

@@ -1,0 +1,35 @@
+package components
+
+type ButtonSubmitProps struct{
+    TextBtn string
+}
+
+templ ButtonSubmit(props ButtonSubmitProps) {
+    @ButtonSubmitStyle()
+    
+    <button class="button-submit" type="submit">
+        {props.TextBtn}
+    </button>
+   
+}
+
+templ ButtonSubmitStyle(){
+    <style>
+        .button-submit{
+            padding: 5px 20px 5px 20px;
+            margin: 5px 5px 5px 5px;
+            border-radius: 8px;
+            /* border: none; */
+            background: rgb(74, 75, 79);
+            color: rgb(227, 225, 174);
+            border: 1px solid rgb(121, 120, 117);
+            text-decoration: none;
+            text-align: center;
+            /*align-items: center;*/
+            justify-items: baseline;
+        }
+        .button-submit:hover{
+            background: rgb(49, 50, 54);
+        }
+    </style>
+}

@@ -13,6 +13,7 @@ func main(){
 	start()
 	app := fiber.New()
 	app.Use(recover.New())
+	app.Static("/public", "./public")
 
 	//Handlers
 	home.NewHandlerHome(app)

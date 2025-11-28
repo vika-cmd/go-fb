@@ -1,0 +1,107 @@
+package layout
+
+import (
+    //"app/fb/views/components"
+    "time"
+)
+
+templ Menu() {
+    {{dtnow := time.Now().Format("2006-01-02 15:04")}}
+    @MenuStyle()
+    <divs class="menu">
+        <div class="menu__left">
+            <a href="/">        
+                <img src="/public/swg/rucno-narisovannyi-dudl-s-margaritkoi/6466e54c-d311-4a21-b303-c73b44c57a38.jpg" alt="Logo" width="31" height="31"/>
+            </a>
+            <a class="menu__left-link" href="/">Home</a>
+        </div>
+
+
+        <div class="menu__alarm__now">{ dtnow }</div>
+
+        <div  class="menu__alarm">
+            <a class="menu__alarm-link" href="#">Alarm</a>
+        </div>    
+    
+
+        <div class="menu__right">
+            <a class="menu__right-link" href="/login">Войти</a>
+        </div>
+    </divs>
+}
+
+templ MenuStyle() {
+    <style>
+        .menu{
+            display: flex;
+            flex-direction: row;                     
+            justify-content: space-between;
+            padding: 0 20px;
+            max-width: 1290px;
+            align-items: center;
+            height: 50px;  /* 80 */
+            /* margin: 5px; */
+            background: rgb(17, 16, 16);
+            color: var(--color-yelous);
+        }
+
+        .menu__left{
+            display: flex;
+            gap: 20px;
+            align-items: center;            
+            background: rgb(17, 16, 16);
+        }
+
+        img {
+            border-radius: 15px;
+            padding: 2px 1px 2px 1px;
+            margin: 2px 1px 2px 1px;
+        }
+
+        .menu__left-link{
+            color: rgb(228, 234, 163);
+        }
+/*         .menu__logo{
+            color: rgb(197, 50, 143);
+        } */
+
+
+        /*--*/
+        .menu__right{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            
+        }
+        .menu__right-link{
+            text-decoration: none;
+            color: rgb(215, 105, 105);
+            /* font-size: 25px; */
+        }
+        .menu__right-link:hover{
+            text-decoration: none;
+            color: rgb(234, 99, 99);
+            /* font-size: 25px; */
+        }
+
+
+        .menu__alarm-link{
+            text-decoration: none;
+            color: rgb(131, 191, 18);
+            /* font-size: 25px; */
+        }
+        .menu__alarm-link:hover{
+            text-decoration: none;
+            color: rgb(15, 117, 31);
+            /* font-size: 25px; */
+        }
+
+        .menu__alarm__now{
+            background:rgb(207, 221, 220);
+            color: rgb(11, 86, 22);
+            border-radius: 5px;
+            padding: 2px 3px 2px 3px;
+            margin: 2px 3px 2px 3px;
+        }
+    </style>
+}

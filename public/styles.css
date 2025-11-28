@@ -1,0 +1,23 @@
+:root {
+  --color-white: rgb(240, 240, 223);
+  --color-blue: rgb(83, 15, 218);
+  --color-sea: rgb(12, 61, 68);
+  --color-sea-b: rgb(12, 61, 68);
+   --color-green: rgb(40, 162, 125);
+  --color-red: #911c47;
+  --color-orange: rgb(239, 115, 49);
+  --color-yelous: rgb(228, 234, 163);
+  --color-black: rgb(14, 14, 15);
+  --color-gray: rgb(62, 58, 56);
+  --color-primary-hover: #126156;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* font-family: "Sofia", sans-serif; */
+}
+
+* {
+  box-sizing: border-box;
+}

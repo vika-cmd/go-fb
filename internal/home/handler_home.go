@@ -7,7 +7,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 
-	"app/go-fb/views/components"
+	"app/go-fb/views"
+	//"app/go-fb/views/components"
 	"app/go-fb/pkg/templadapter"
 )
 
@@ -18,17 +19,18 @@ type HandlerHome struct {
 func NewHandlerHome(router fiber.Router) {
 	hn := &HandlerHome{
 		router: router,
-	}
-	//hn.router.Get("/", hn.home)
-	api := hn.router.Group("/api")
+	}	
+/* 	api := hn.router.Group("/api")
 	api.Get("/", hn.home)
-	api.Get("/error", hn.errorPage)
+	api.Get("/error", hn.errorPage) */
+	hn.router.Get("/", hn.home)
+	hn.router.Get("/404", hn.errorPage)
 }
 
 func (hn *HandlerHome) home(c *fiber.Ctx) error {
 	fmt.Println("HandlerHome#home")
-	component := components.Title(components.TitleProps{Message: "HandlerHome#h"})
-
+	//component := components.Title(components.TitleProps{Message: "HandlerHome#h"})
+	component := views.MainPage()
 	//component.Render(context.Background(), os.Stdout) //cod in consol
 	//return c.SendString("HandlerHome#home") //page
 

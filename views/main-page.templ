@@ -1,0 +1,38 @@
+package views 
+
+import(
+    "app/go-fb/views/components"
+    "app/go-fb/views/layout"
+)
+
+templ MainPage() {
+    @layout.Layout(layout.LayoutProps{Title: "Заметки",MetaDescription: "Сайт для заметок"}){
+        
+        <main class="main-page">
+        @MainPageStyle()
+        @layout.Header(){
+            @components.Title(components.TitleProps{Message: "All Tasks"})
+            @components.TitleSub(components.TitleSubProps{Message: "sub text"})
+        }
+        <div class="fo">        
+            @components.TitleSub(components.TitleSubProps{Message: "Добавить заметку"})
+            @components.Input(components.InputProps{Placeholder: "Тема", Name: "task", Type: "text"})
+            @components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "Send"})
+        </div>
+        ff</main>
+    }
+
+
+}
+
+templ MainPageStyle() {
+   <style>
+        .main-page{
+            background: rgb(200,200,200);
+        }
+        .fo{
+            background: rgb(33, 25, 25); 
+        }
+   </style> 
+}
+
