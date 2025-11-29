@@ -1,12 +1,14 @@
 package main
 
-import (	
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/recover"
+import (
 	"fmt"
 
-	"app/go-fb/internal/home"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/recover"
+
 	"app/go-fb/config"
+	"app/go-fb/internal/home"
+	"app/go-fb/internal/note"
 )
 
 func main(){
@@ -17,6 +19,7 @@ func main(){
 
 	//Handlers
 	home.NewHandlerHome(app)
+	note.NewHandlerNote(app)
 	
 	app.Listen("localhost:3031")
 }

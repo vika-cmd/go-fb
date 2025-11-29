@@ -81,7 +81,7 @@ func TitleSubStyle() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<style> \r\n        .title-sub{            \r\n            margin: 2px 3px 2px 3px;            \r\n            font-size:16px;\r\n            color: rgb(200,200,200);/* var(--color-red); */\r\n            text-align: center;            \r\n        }\r\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<style> \r\n        .title-sub{            \r\n            margin: 10px 15px 10px 15px;\r\n            padding: 10px 15px 10px 15px;             \r\n            font-size:16px;\r\n            color: rgb(200,200,200);/* var(--color-red); */\r\n            text-align: center;            \r\n        }\r\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

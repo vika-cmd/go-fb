@@ -2,6 +2,7 @@ package views
 
 import(
     "app/go-fb/views/components"
+    "app/go-fb/views/widgets"
     "app/go-fb/views/layout"
 )
 
@@ -11,13 +12,10 @@ templ MainPage() {
         <main class="main-page">
         @MainPageStyle()
         @layout.Header(){
-            @components.Title(components.TitleProps{Message: "All Tasks"})
-            @components.TitleSub(components.TitleSubProps{Message: "sub text"})
+            @components.Title(components.TitleProps{Message: "All Tasks"})        
         }
-        <div class="fo">        
-            @components.TitleSub(components.TitleSubProps{Message: "Добавить заметку"})
-            @components.Input(components.InputProps{Placeholder: "Тема", Name: "task", Type: "text"})
-            @components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "Send"})
+        <div class="main-submit-form"> 
+            @widgets.NoteAddForm()
         </div>
         ff</main>
     }
@@ -30,7 +28,7 @@ templ MainPageStyle() {
         .main-page{
             background: rgb(200,200,200);
         }
-        .fo{
+        .main-submit-form{
             background: rgb(33, 25, 25); 
         }
    </style> 

@@ -1,0 +1,64 @@
+package widgets
+
+import(
+    "app/go-fb/views/components"
+)
+
+/* type NoteAddFormProps struct{
+
+} */
+
+templ NoteAddForm() {
+    @NoteAddFormStyle()
+    <div class="note-add-form">
+        <div class="note-add-form__title">
+        @components.TitleSub(components.TitleSubProps{Message: "Добавить заметку"})
+        </div>
+        
+        <form>
+        <div class="note-add-form__inputs">
+            @components.Input(components.InputProps{Placeholder: "Тема", Name: "task", Type: "text"})
+            @components.Input(components.InputProps{Placeholder: "Категория", Name: "category", Type: "text"})
+            @components.Input(components.InputProps{Placeholder: "Приоритет", Name: "priority", Type: "number"})
+            @components.Input(components.InputProps{Placeholder: "Описание", Name: "description", Type: "text"})
+            @components.Input(components.InputProps{Placeholder: "к дате", Name: "byDate", Type: "date"})
+        </div>
+        <div class="note-add-form__btn">
+            @components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "Send"})
+        </div>  
+        </form>
+    </div>
+}
+
+templ NoteAddFormStyle() {
+    <style>
+    .note-add-form{
+       /*  display: flex; */
+        /*align-items: center;/*  vert */
+        /*justify-content: center;/*  goriz */
+        width: 80%;
+
+    }
+/*     note-add-form form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;  
+    } */
+    .note-add-form__inputs{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 20px;
+    }
+    /*  .note-add-form__title{ .note-add-form__btn{ */
+/*         justify-content: center;
+        ap: 10px 20px;
+    } */
+/*     .note-add-form__btn{
+        justify-content: center;
+        ap: 10px 20px;
+    } */
+
+    </style>
+}
