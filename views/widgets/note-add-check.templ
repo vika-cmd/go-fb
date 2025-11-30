@@ -1,0 +1,26 @@
+package widgets
+
+type NoteAddCheckProps struct{
+    message string
+}
+
+templ NoteAddCheck(props NoteAddCheckProps) {
+    @NoteAddCheckStyle()
+    <div class="note-check note-check-bad">{props.message}</div>
+    
+}
+
+templ NoteAddCheckStyle() {
+    <style>
+    .check-note{
+        width: 100%;
+        background-color:  rgb(82, 78, 6);
+    }
+
+    .note-add-check-bad{
+
+    }
+    </style>
+
+}
+

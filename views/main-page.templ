@@ -2,7 +2,7 @@ package views
 
 import(
     "app/go-fb/views/components"
-    "app/go-fb/views/widgets"
+   // "app/go-fb/views/widgets"
     "app/go-fb/views/layout"
 )
 
@@ -14,9 +14,11 @@ templ MainPage() {
         @layout.Header(){
             @components.Title(components.TitleProps{Message: "All Tasks"})        
         }
-        <div class="main-submit-form"> 
+/*         <div class="main-submit-form"> 
             @widgets.NoteAddForm()
-        </div>
+        </div> */
+
+        <div id="res-add-note"></div>
         ff</main>
     }
 
@@ -28,8 +30,11 @@ templ MainPageStyle() {
         .main-page{
             background: rgb(200,200,200);
         }
-        .main-submit-form{
+/*         .main-submit-form{
             background: rgb(33, 25, 25); 
+        } */
+        #res-add-note{
+            background: rgb(33, 25, 25);
         }
    </style> 
 }

@@ -11,8 +11,8 @@ import templruntime "github.com/a-h/templ/runtime"
 type NotificationStatus string
 
 const (
-	NotificationSuccess NotificationStatus = "success"
-	NotificationFail    NotificationStatus = "fail"
+	NOTIFICATION_SUCCESS NotificationStatus = "success"
+	NOTIFICATION_FAIL    NotificationStatus = "fail"
 )
 
 func Notification(message string, status NotificationStatus) templ.Component {
@@ -41,8 +41,8 @@ func Notification(message string, status NotificationStatus) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 = []any{"notification",
-			templ.KV("notification_success", status == NotificationSuccess),
-			templ.KV("notification_fail", status == NotificationFail)}
+			templ.KV("notification_success", status == NOTIFICATION_SUCCESS),
+			templ.KV("notification_fail", status == NOTIFICATION_FAIL)}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -102,7 +102,7 @@ func StyleNotification() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n    .notification{            \r\n        color: rgb(19, 79, 27);\r\n        font-size: 16px;        \r\n        text-align: center;\r\n        padding: 15px 10px 15px 10px;\r\n        margin: 10px;\r\n    }\r\n    .notification_success{\r\n            background-color:  rgb(190, 208, 205);\r\n            border-radius: 10px;\r\n    }\r\n\r\n    .notification_fail{\r\n            background-color:  rgb(222, 161, 154);\r\n            border-radius: 10px;\r\n    }\r\n    .htmx-swapping .notification {\r\n        opacity: 0;\r\n        transition: opacity 1s ease-out; /* задает плавный переход для изменения непрозрачности (opacity) элемента в течение 1 секунды. Переход */\r\n    }\r\n\r\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n    .notification{            \r\n        color: rgb(19, 79, 27);\r\n        font-size: 16px;        \r\n        text-align: center;\r\n        padding: 15px 10px 15px 10px;\r\n        margin: 10px;\r\n        border-radius: 10px;\r\n    }\r\n    .notification_success{\r\n        background-color:  rgb(190, 208, 205);        \r\n    }\r\n\r\n    .notification_fail{\r\n        background-color:  rgb(222, 161, 154);        \r\n    }\r\n    .htmx-swapping .notification {\r\n        opacity: 0;\r\n        transition: opacity 1s ease-out; /* задает плавный переход для изменения непрозрачности (opacity) элемента в течение 1 секунды. Переход */\r\n    }\r\n\r\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

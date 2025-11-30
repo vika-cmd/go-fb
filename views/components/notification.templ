@@ -3,16 +3,16 @@ package components
 type NotificationStatus string
 
 const (
-    NotificationSuccess NotificationStatus="success"
-    NotificationFail NotificationStatus="fail"
+    NOTIFICATION_SUCCESS NotificationStatus="success"
+    NOTIFICATION_FAIL NotificationStatus="fail"
 )
 
 templ Notification(message string, status NotificationStatus) {
     @StyleNotification()
     <div class={
         "notification",
-        templ.KV("notification_success", status==NotificationSuccess),
-        templ.KV("notification_fail", status==NotificationFail)
+        templ.KV("notification_success", status==NOTIFICATION_SUCCESS),
+        templ.KV("notification_fail", status==NOTIFICATION_FAIL)
     }>{message}</div>
     
 }
@@ -25,15 +25,14 @@ templ StyleNotification() {
         text-align: center;
         padding: 15px 10px 15px 10px;
         margin: 10px;
+        border-radius: 10px;
     }
     .notification_success{
-            background-color:  rgb(190, 208, 205);
-            border-radius: 10px;
+        background-color:  rgb(190, 208, 205);        
     }
 
     .notification_fail{
-            background-color:  rgb(222, 161, 154);
-            border-radius: 10px;
+        background-color:  rgb(222, 161, 154);        
     }
     .htmx-swapping .notification {
         opacity: 0;

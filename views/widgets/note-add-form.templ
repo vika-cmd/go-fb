@@ -14,8 +14,13 @@ templ NoteAddForm() {
         <div class="note-add-form__title">
         @components.TitleSub(components.TitleSubProps{Message: "Добавить заметку"})
         </div>
-        
-        <form>
+        <div id="res-note"></div>
+        <form
+            hx-post="/note"
+            hx-trigger="submit"
+            hx-target="#res-note"
+            hx-swap="innerHTML"
+            >
         <div class="note-add-form__inputs">
             @components.Input(components.InputProps{Placeholder: "Тема", Name: "task", Type: "text"})
             @components.Input(components.InputProps{Placeholder: "Категория", Name: "category", Type: "text"})

@@ -21,7 +21,15 @@ templ Menu() {
 
         <div  class="menu__alarm">
             <a class="menu__alarm-link" href="#">Alarm</a>
-        </div>    
+        </div>
+
+        <div  class="menu__note"
+            hx-get="/note/add"
+            hx-trigger="click"
+            hx-target="#res-add-note"
+            >Добавить заметку
+            
+        </div>               
     
 
         <div class="menu__right">
@@ -85,6 +93,15 @@ templ MenuStyle() {
         }
 
 
+        .menu__note{
+            text-decoration: none;
+            color: rgb(131, 191, 18);
+        }
+        .menu__note:hover{
+            /* text-decoration: none; */
+            color: rgb(15, 117, 31);
+        }
+
         .menu__alarm-link{
             text-decoration: none;
             color: rgb(131, 191, 18);
@@ -103,5 +120,10 @@ templ MenuStyle() {
             padding: 2px 3px 2px 3px;
             margin: 2px 3px 2px 3px;
         }
+
+
+       /*  ========== */
+
+
     </style>
 }
