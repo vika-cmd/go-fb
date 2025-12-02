@@ -10,6 +10,7 @@ import(
 
 templ NoteAddForm() {
     @NoteAddFormStyle()
+    /* hx-target="#res-note" over form-swap Notification*/
     <div class="note-add-form">
         <div class="note-add-form__title">
         @components.TitleSub(components.TitleSubProps{Message: "Добавить заметку"})
@@ -19,7 +20,7 @@ templ NoteAddForm() {
             hx-post="/note"
             hx-trigger="submit"
             hx-target="#res-note"
-            hx-swap="innerHTML"
+            hx-swap="innerHTML swap:1s"
             >
         <div class="note-add-form__inputs">
             @components.Input(components.InputProps{Placeholder: "Тема", Name: "task", Type: "text"})

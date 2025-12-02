@@ -5,13 +5,16 @@ import (
 	"fmt"
 	//"os"
 
-	"github.com/gofiber/fiber/v2"
 	"github.com/a-h/templ"
+	"github.com/gobuffalo/validate"
+	"github.com/gobuffalo/validate/validators"
+	"github.com/gofiber/fiber/v2"
 
 	//"app/go-fb/views"
+	"app/go-fb/pkg/templadapter"
+	"app/go-fb/pkg/validator"
 	"app/go-fb/views/components"
 	"app/go-fb/views/widgets"
-	"app/go-fb/pkg/templadapter"
 )
 
 
@@ -37,10 +40,17 @@ func (hn *HandlerNote) addNote(c *fiber.Ctx) error {
 
 func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 	var component templ.Component
-	task := c.FormValue("task")
-	fmt.Println("HandlerNote#add- task ", task)
-	if task == ""{
-		component = components.Notification("task - err!", components.NOTIFICATION_FAIL)
+
+	form := ModelNoteForm{
+		Task: c.FormValue("task"),
+	}
+	errors :=validate.Validate(
+		&validators.StringIsPresent{Name: "task", Field: c.FormValue("task"), Message: "filling error!"},
+	)
+	//task := c.FormValue("task")
+	fmt.Println("HandlerNote#add- task ",form.Task)
+	if len(errors.Errors) > 0 {
+		component = components.Notification(validator.FormatErrors(errors), components.NOTIFICATION_FAIL)
 		return templadapter.Render(c, component,200)
 	} else {
 		component = components.Notification("Ok", components.NOTIFICATION_SUCCESS)

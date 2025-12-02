@@ -1,7 +1,7 @@
 package layout
 
 import (
-    //"app/fb/views/components"
+    "app/go-fb/views/components"    
     "time"
 )
 
@@ -23,18 +23,25 @@ templ Menu() {
             <a class="menu__alarm-link" href="#">Alarm</a>
         </div>
 
-        <div  class="menu__note"
+/*         <div  class="menu__note"
             hx-get="/note/add"
             hx-trigger="click"
             hx-target="#res-add-note"
             >Добавить заметку
             
-        </div>               
-    
-
+        </div>  */
+                      
         <div class="menu__right">
-            <a class="menu__right-link" href="/login">Войти</a>
+            @components.MenuDropdown()
         </div>
+
+/*         <div class="menu__right"            
+            hx-get="/note/submenu"
+            hx-trigger="click"
+            >Заметки
+            <a class="menu__right-link" href="/login">Войти</a>
+        </div> */
+        
     </divs>
 }
 
