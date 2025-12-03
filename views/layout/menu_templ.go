@@ -52,7 +52,7 @@ func Menu() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"menu__alarm\"><a class=\"menu__alarm-link\" href=\"#\">Alarm</a></div><div class=\"menu__right\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"menu__alarm\"><a class=\"menu__alarm-link\" href=\"#\">Alarm</a></div><div class=\"menu__contact\"><button hx-get=\"/contact\">Contact</button></div><div class=\"menu__right\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -3,6 +3,7 @@ package note
 import (
 	//"context"
 	"fmt"
+	"time"
 	//"os"
 
 	"github.com/a-h/templ"
@@ -49,6 +50,10 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 	)
 	//task := c.FormValue("task")
 	fmt.Println("HandlerNote#add- task ",form.Task)
+
+	// sleep -> form class "htmx-request"
+	time.Sleep(time.Second * 2)
+
 	if len(errors.Errors) > 0 {
 		component = components.Notification(validator.FormatErrors(errors), components.NOTIFICATION_FAIL)
 		return templadapter.Render(c, component,200)

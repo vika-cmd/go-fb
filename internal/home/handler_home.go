@@ -25,7 +25,13 @@ func NewHandlerHome(router fiber.Router) {
 	api.Get("/error", hn.errorPage) */
 	hn.router.Get("/", hn.home)
 	hn.router.Get("/404", hn.errorPage)
+	//hn.router.Get("/contact", hn.contact)
 }
+
+/* func (hn *HandlerHome) contact(c *fiber.Ctx) error {
+	redir := "https://yandex.ru/maps/39/rostov-na-donu/?ll=39.709844%2C47.226728&mode=poi&poi%5Bpoint%5D=39.732830%2C47.224679&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1138347645&z=13"
+	return c.Redirect(redir, 200)
+} */
 
 func (hn *HandlerHome) home(c *fiber.Ctx) error {
 	fmt.Println("HandlerHome#home")
