@@ -1,0 +1,12 @@
+services:
+  postgres:
+    container_name: fb_notebook
+    image: postgres
+    environment:
+      POSTGRES_USER: "user_notebook"
+      POSTGRES_PASSWORD: "pass_notebook"
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres-data:/data/postgres
+    ports:
+      - "5430:5432"
