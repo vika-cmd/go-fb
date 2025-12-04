@@ -18,15 +18,18 @@ func main(){
 	app.Use(recover.New())
 	app.Static("/public", "./public")
 
-/* 	dbConf :=config.NewDatebaseConfig() //2
+	//dbpool
+	dbConf :=config.NewDatebaseConfig() //2
 	fmt.Println(dbConf)
 	dbpool :=database.CreateDbPool(dbConf)// 3
-	defer dbpool.Close()// 4 */
-	db()
+	defer dbpool.Close()// 4	
+
+	//repo
+	repoNote := note.NewRepositoryNote(dbpool)
 	
 	//Handlers
 	home.NewHandlerHome(app)
-	note.NewHandlerNote(app)
+	note.NewHandlerNote(app,repoNote)
 	
 	app.Listen("localhost:3031")
 }
@@ -38,11 +41,4 @@ func start(){
 	fmt.Println(tumbler) */
 	val := config.NewCurrentVal()
 	fmt.Println(val)
-}
-
-func db(){
-	dbConf :=config.NewDatebaseConfig() //2
-	fmt.Println(dbConf)
-	dbpool :=database.CreateDbPool(dbConf)// 3
-	defer dbpool.Close()// 4	
 }

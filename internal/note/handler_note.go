@@ -10,8 +10,7 @@ import (
 	"github.com/gobuffalo/validate"
 	"github.com/gobuffalo/validate/validators"
 	"github.com/gofiber/fiber/v2"
-
-	//"app/go-fb/views"
+	
 	"app/go-fb/pkg/templadapter"
 	"app/go-fb/pkg/validator"
 	"app/go-fb/hlp"
@@ -22,11 +21,13 @@ import (
 
 type HandlerNote struct {
 	router fiber.Router
+	repository *RepositoryNote
 }
 
-func NewHandlerNote(router fiber.Router) {
+func NewHandlerNote(router fiber.Router, repository *RepositoryNote) {
 	hn := &HandlerNote{
 		router: router,
+		repository: repository,
 	}	
 	noteGr := hn.router.Group("/note")
 	noteGr.Get("/add", hn.addNote)
@@ -63,6 +64,7 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 		Priority: priority,
 		Description: c.FormValue("description"),
 		ByDate: date,
+		Createdat: time.Now(),
 	}
 	errors :=validate.Validate(
 		&validators.StringIsPresent{Name: "Заметка", Field: c.FormValue("task"), Message: "filling error (некорректный ввод)"},
@@ -81,6 +83,7 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 		component = components.Notification(validator.FormatErrors(errors), components.NOTIFICATION_FAIL)
 		return templadapter.Render(c, component,200)
 	} else {
+		hn.repository.addNote(form)
 		component = components.Notification("Ok", components.NOTIFICATION_SUCCESS)
 		return templadapter.Render(c, component,200)
 	}
