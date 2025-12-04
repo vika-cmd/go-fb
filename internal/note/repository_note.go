@@ -1,11 +1,11 @@
 package note
 
 import (
-	//"context"
+	"context"
 	"fmt"
-	//"time"
+	"time"
 
-	//"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -22,26 +22,26 @@ func NewRepositoryNote(dbpool *pgxpool.Pool) *RepositoryNote{
 
 
 func (r *RepositoryNote) addNote(form ModelNoteForm) error{
-fmt.Printf("repo#addNote- Task - %s", form.Task)
-/* 	query := `INSERT INTO tasks (task, email, role, category, priority, description, readydat) VALUES (@task, @email, @role, @category, @priority, @description, @readydat)`
-	args := pgx.NamedArgs{
-		"task": form.Task,
-		"email": form.Email,
-		"role": form.Role,
-		"category": form.Category,
-		"priority": form.Priority,
-		"description": form.Description,
-		"readydat": form.Readydat,
-		"createdat": time.Now(),		
-	}
-	_,err := r.Dbpool.Exec(context.Background(), query, args)
-	if err != nil {
-		fmt.Printf("repo#addTodo- err - %s", err)		
-	} */
-	
-	//fmt.Printf("repo#addTodo: Тип  form.Readydata: %T\n", form.Readydat)  time.Time  time.Now()
+fmt.Println("repo#addNote-", form.Task, form.Category, form.Priority, form.Description, form.ByDate, time.Now())
+query := `INSERT INTO note (task, category, priority, description, bydate,createdat) VALUES (@task, @category, @priority, @description, @bydate, @createdat)`
+args := pgx.NamedArgs{
+	"task": form.Task,
+	"category": form.Category,
+	"priority": form.Priority,
+	"description": form.Description,
+	"bydate": form.ByDate,		
+	"createdat": time.Now(),		
+}
+_,err := r.Dbpool.Exec(context.Background(), query, args)
+if err != nil {
+	fmt.Printf("repo#addNote- err - %v\n", err)
+	return err		
+}
 
-	return nil
+fmt.Printf("repo#addNote: Тип  form.ByDate: %T\n", form.ByDate)
+fmt.Println("repo#addNote: time.Now(): ", time.Now())
+
+return nil
 } 
 
 

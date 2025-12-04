@@ -82,11 +82,17 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 	if len(errors.Errors) > 0 {
 		component = components.Notification(validator.FormatErrors(errors), components.NOTIFICATION_FAIL)
 		return templadapter.Render(c, component,200)
-	} else {
-		hn.repository.addNote(form)
-		component = components.Notification("Ok", components.NOTIFICATION_SUCCESS)
+	}
+
+	err = hn.repository.addNote(form)
+	if err != nil {
+		component = components.Notification("Ошибка при сохранении заметки", components.NOTIFICATION_FAIL)
+		fmt.Println("HandlerNote#add- err from repo")
 		return templadapter.Render(c, component,200)
 	}
+	component = components.Notification("Ok", components.NOTIFICATION_SUCCESS)
+	return templadapter.Render(c, component,200)
+	
 
 	//return c.SendString("HandlerNote")	
 }

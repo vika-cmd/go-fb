@@ -13,7 +13,11 @@ import (
 )
 
 func main(){
-	start()
+	startEnv()
+/* 	config.Init() //1
+	val := config.NewCurrentVal()
+	fmt.Println(val) */
+
 	app := fiber.New()
 	app.Use(recover.New())
 	app.Static("/public", "./public")
@@ -34,11 +38,11 @@ func main(){
 	app.Listen("localhost:3031")
 }
 
-func start(){
-	config.Init() //1
+func startEnv(){
+	config.Init()  ///1
 
-/* 	tumbler := config.NewFlag()
-	fmt.Println(tumbler) */
-	val := config.NewCurrentVal()
+// 	tumbler := config.NewFlag()
+//	fmt.Println(tumbler) 
+ 	val := config.NewCurrentVal()
 	fmt.Println(val)
 }
