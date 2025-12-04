@@ -3,7 +3,7 @@ services:
     container_name: fb_notebook
     image: postgres
     environment:
-      POSTGRES_USER: "user_notebook"
+      POSTGRES_USER: "notebook"
       POSTGRES_PASSWORD: "pass_notebook"
       PGDATA: /data/postgres
     volumes:

@@ -1,0 +1,27 @@
+CREATE DATABASE notebook;
+DROP DATABASE user_notebook;
+
+CREATE TABLE note (
+    id SERIAL PRIMARY KEY,
+    task VARCHAR(255) NOT NULL,
+    category VARCHAR(255),
+    priority INTEGER,
+    description VARCHAR(255),
+    bydate DATE,
+    createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    readydat DATE
+);
+
+
+
+/*  createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP, */
+/*     readydat TIMESTAMP WITH TIME ZONE */
+
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    text TEXT NOT NULL,
+    completed BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+
