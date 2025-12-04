@@ -14,6 +14,7 @@ import (
 	//"app/go-fb/views"
 	"app/go-fb/pkg/templadapter"
 	"app/go-fb/pkg/validator"
+	"app/go-fb/hlp"
 	"app/go-fb/views/components"
 	"app/go-fb/views/widgets"
 )
@@ -42,17 +43,39 @@ func (hn *HandlerNote) addNote(c *fiber.Ctx) error {
 func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 	var component templ.Component
 
-	form := ModelNoteForm{
+	strPriority :=c.FormValue("priority")
+	priority, err := hlp.ConvStrToInt(strPriority)
+	if err != nil {
+		fmt.Printf("HandlerNote#fromform: priority -ConvStrToInt err-%v \n", err)
+	}
+	//fmt.Printf("HandlerNote#fromform: type uPriority-%T \n", priority)
+
+	strByDate := c.FormValue("byDate")
+	date, err := hlp.ConvStrToDate(strByDate)
+	if err != nil {
+		fmt.Printf("HandlerNote#fromform: byDate -ConvStrToDate err-%v \n", err)
+	}
+	//fmt.Printf("HandlerNote#fromform: type date-%T \n", date)
+
+	form := ModelNoteForm {
 		Task: c.FormValue("task"),
+		Category: c.FormValue("category"),
+		Priority: priority,
+		Description: c.FormValue("description"),
+		ByDate: date,
 	}
 	errors :=validate.Validate(
-		&validators.StringIsPresent{Name: "task", Field: c.FormValue("task"), Message: "filling error!"},
+		&validators.StringIsPresent{Name: "Заметка", Field: c.FormValue("task"), Message: "filling error (некорректный ввод)"},
+		&validators.StringIsPresent{Name: "Категория", Field: c.FormValue("category"), Message: "filling error (некорректный ввод)"},
+		&validators.StringIsPresent{Name: "Приоритет", Field: c.FormValue("priority"), Message: "filling error (некорректный ввод)"},
+		&validators.StringIsPresent{Name: "Описание", Field: c.FormValue("description"), Message: "filling error (некорректный ввод)"},
+		&validators.StringIsPresent{Name: "Дата", Field: c.FormValue("byDate"), Message: "filling error (некорректный ввод)"},
 	)
-	//task := c.FormValue("task")
-	fmt.Println("HandlerNote#add- task ",form.Task)
+
+	fmt.Println("HandlerNote#add- err ",form.Task,form.Category, form.Priority, form.Description, form.ByDate)
 
 	// sleep -> form class "htmx-request"
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Second * 1)
 
 	if len(errors.Errors) > 0 {
 		component = components.Notification(validator.FormatErrors(errors), components.NOTIFICATION_FAIL)
