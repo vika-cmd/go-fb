@@ -42,7 +42,7 @@ func NoteAddForm() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"note-add-form\"><div class=\"note-add-form__title\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"note-add-form\" hx-ext=\"response-targets\"><div class=\"note-add-form__title\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,7 +50,7 @@ func NoteAddForm() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div id=\"res-note\"></div><form hx-post=\"/note\" hx-trigger=\"submit\" hx-target=\"#res-note\" hx-swap=\"innerHTML swap:1s\" hx-on::before-request=\"console.log(event)\" hx-on::after-request=\"if(event.detail.successful) this.reset()\"><div class=\"note-add-form__inputs\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div id=\"res-note\"></div><form hx-target-error=\"#res-note\" hx-post=\"/note\" hx-trigger=\"submit\" hx-target=\"#res-note\" hx-swap=\"innerHTML swap:1s\" hx-on::before-request=\"console.log(event)\" hx-on::after-request=\"if(event.detail.successful) this.reset()\"><div class=\"note-add-form__inputs\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

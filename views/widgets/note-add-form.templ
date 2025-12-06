@@ -11,12 +11,13 @@ import(
 templ NoteAddForm() {
     @NoteAddFormStyle()
     /* hx-target="#res-note" over form-swap Notification*/
-    <div class="note-add-form">
+    <div class="note-add-form" hx-ext="response-targets">
         <div class="note-add-form__title">
         @components.TitleSub(components.TitleSubProps{Message: "Добавить заметку"})
         </div>
         <div id="res-note"></div>
-        <form
+        <form            
+            hx-target-error="#res-note"
             hx-post="/note"
             hx-trigger="submit"
             hx-target="#res-note"
