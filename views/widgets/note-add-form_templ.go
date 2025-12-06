@@ -15,6 +15,7 @@ import (
 /* type NoteAddFormProps struct{
 
 } */
+/* detail.successful */
 
 func NoteAddForm() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -49,7 +50,7 @@ func NoteAddForm() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div id=\"res-note\"></div><form hx-post=\"/note\" hx-trigger=\"submit\" hx-target=\"#res-note\" hx-swap=\"innerHTML swap:1s\"><div class=\"note-add-form__inputs\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div id=\"res-note\"></div><form hx-post=\"/note\" hx-trigger=\"submit\" hx-target=\"#res-note\" hx-swap=\"innerHTML swap:1s\" hx-on::before-request=\"console.log(event)\" hx-on::after-request=\"if(event.detail.successful) this.reset()\"><div class=\"note-add-form__inputs\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

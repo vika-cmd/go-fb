@@ -3,17 +3,19 @@ package note
 import (
 	//"context"
 	"fmt"
+	"net/http"
 	"time"
+
 	//"os"
 
 	"github.com/a-h/templ"
 	"github.com/gobuffalo/validate"
 	"github.com/gobuffalo/validate/validators"
 	"github.com/gofiber/fiber/v2"
-	
+
+	"app/go-fb/hlp"
 	"app/go-fb/pkg/templadapter"
 	"app/go-fb/pkg/validator"
-	"app/go-fb/hlp"
 	"app/go-fb/views/components"
 	"app/go-fb/views/widgets"
 )
@@ -81,17 +83,17 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 
 	if len(errors.Errors) > 0 {
 		component = components.Notification(validator.FormatErrors(errors), components.NOTIFICATION_FAIL)
-		return templadapter.Render(c, component,200)
+		return templadapter.Render(c, component,http.StatusBadRequest)
 	}
 
 	err = hn.repository.addNote(form)
 	if err != nil {
 		component = components.Notification("Ошибка при сохранении заметки", components.NOTIFICATION_FAIL)
 		fmt.Println("HandlerNote#add- err from repo")
-		return templadapter.Render(c, component,200)
+		return templadapter.Render(c, component,http.StatusBadRequest)
 	}
 	component = components.Notification("Ok", components.NOTIFICATION_SUCCESS)
-	return templadapter.Render(c, component,200)
+	return templadapter.Render(c, component, http.StatusOK)
 	
 
 	//return c.SendString("HandlerNote")	

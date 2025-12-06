@@ -1,11 +1,11 @@
 package note
 
 import (
-	"context"
+	//"context"
 	"fmt"
 	"time"
 
-	"github.com/jackc/pgx/v5"
+	//"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -23,7 +23,7 @@ func NewRepositoryNote(dbpool *pgxpool.Pool) *RepositoryNote{
 
 func (r *RepositoryNote) addNote(form ModelNoteForm) error{
 fmt.Println("repo#addNote-", form.Task, form.Category, form.Priority, form.Description, form.ByDate, time.Now())
-query := `INSERT INTO note (task, category, priority, description, bydate,createdat) VALUES (@task, @category, @priority, @description, @bydate, @createdat)`
+/* query := `INSERT INTO note (task, category, priority, description, bydate,createdat) VALUES (@task, @category, @priority, @description, @bydate, @createdat)`
 args := pgx.NamedArgs{
 	"task": form.Task,
 	"category": form.Category,
@@ -37,7 +37,7 @@ if err != nil {
 	fmt.Printf("repo#addNote- err - %v\n", err)
 	return err		
 }
-
+ */
 fmt.Printf("repo#addNote: Тип  form.ByDate: %T\n", form.ByDate)
 fmt.Println("repo#addNote: time.Now(): ", time.Now())
 

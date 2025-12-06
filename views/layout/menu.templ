@@ -24,16 +24,24 @@ templ Menu() {
         </div>
 
         <div class="menu__contact">
-        <button hx-get="/contact">Contact</button>
+        <button hx-get="/contact"            
+            hx-on::before-request="alert('its contact')"
+            >alert</button>
+        </div>
+        
+        <div class="menu__contact">
+        <button hx-get="/contact"
+            hx-on::before-request="console.log(this)"            
+            >this</button>
         </div>
 
-/*         <div  class="menu__note"
-            hx-get="/note/add"
-            hx-trigger="click"
-            hx-target="#res-add-note"
-            >Добавить заметку
-            
-        </div>  */
+        <div class="menu__contact">
+        <button hx-get="/contact"
+            hx-on::after-request="console.log(event)"            
+            >event</button>
+        </div>
+
+
                       
         <div class="menu__right">
             @components.MenuDropdown()

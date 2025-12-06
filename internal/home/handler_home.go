@@ -3,6 +3,7 @@ package home
 import (
 	//"context"
 	"fmt"
+	"net/http"
 	//"os"
 
 	"github.com/gofiber/fiber/v2"
@@ -25,7 +26,7 @@ func NewHandlerHome(router fiber.Router) {
 	api.Get("/error", hn.errorPage) */
 	hn.router.Get("/", hn.home)
 	hn.router.Get("/404", hn.errorPage)
-	//hn.router.Get("/contact", hn.contact)
+	hn.router.Get("/contact", hn.getContact)
 }
 
 /* func (hn *HandlerHome) contact(c *fiber.Ctx) error {
@@ -40,7 +41,7 @@ func (hn *HandlerHome) home(c *fiber.Ctx) error {
 	//component.Render(context.Background(), os.Stdout) //cod in consol
 	//return c.SendString("HandlerHome#home") //page
 
-	return templadapter.Render(c, component,200)
+	return templadapter.Render(c, component, http.StatusOK)
 }
 
 func (hn *HandlerHome) errorPage(c *fiber.Ctx) error {
@@ -49,4 +50,9 @@ func (hn *HandlerHome) errorPage(c *fiber.Ctx) error {
 	//return fiber.ErrBadGateway
 	//return fiber.NewError(400, "Its mess about my err !")
 	return fiber.NewError(fiber.StatusBadRequest, "Its mess about my err !")
+}
+
+func (hn *HandlerHome) getContact(c *fiber.Ctx) error{
+	fmt.Println("HandlerHome# getContact")
+	return nil
 }

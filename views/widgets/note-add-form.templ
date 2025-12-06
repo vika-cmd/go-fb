@@ -7,7 +7,7 @@ import(
 /* type NoteAddFormProps struct{
 
 } */
-
+ /* detail.successful */
 templ NoteAddForm() {
     @NoteAddFormStyle()
     /* hx-target="#res-note" over form-swap Notification*/
@@ -21,6 +21,8 @@ templ NoteAddForm() {
             hx-trigger="submit"
             hx-target="#res-note"
             hx-swap="innerHTML swap:1s"
+            hx-on::before-request="console.log(event)"
+            hx-on::after-request="if(event.detail.successful) this.reset()"           
             >
         <div class="note-add-form__inputs">
             @components.Input(components.InputProps{Placeholder: "Тема", Name: "task", Type: "text"})
