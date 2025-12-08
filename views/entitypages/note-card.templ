@@ -15,7 +15,11 @@ type NoteCardProps struct{
     Readydat 	time.Time
 }
 
+//<div class="note-card__footer">{props.Readydat.String()}</div>
 templ NoteCard(props NoteCardProps){
+    {{byDateDT := props.ByDate.Format("2006-01-02")}}
+    {{createdatDT := props.Createdat.Format("2006-01-02")}}
+    {{readydatDT := props.Readydat.Format("2006-01-02")}}
 	@NoteCardStyle()
     <div class="note-card">
         <div>
@@ -24,9 +28,9 @@ templ NoteCard(props NoteCardProps){
         <div class="note-card__task">{props.Category}</div>
         <div class="note-card__task">{props.Priority}</div>
         <div class="note-card__footer">{props.Description}</div>
-        <div class="note-card__footer">{props.ByDate.String()}</div>
-        <div class="note-card__footer">{props.Createdat.String()}</div>
-        <div class="note-card__footer">{props.Readydat.String()}</div>
+        <div class="note-card__footer">{byDateDT}</div>
+        <div class="note-card__footer">{createdatDT}</div>
+        <div class="note-card__footer">{readydatDT}</div>
     </div>
 }
 
