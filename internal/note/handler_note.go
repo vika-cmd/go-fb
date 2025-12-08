@@ -23,20 +23,22 @@ import (
 
 type HandlerNote struct {
 	router fiber.Router
-	repository *RepositoryNote
+	repositoryNote *RepositoryNote
 }
 
-func NewHandlerNote(router fiber.Router, repository *RepositoryNote) {
+func NewHandlerNote(router fiber.Router, repositoryNote *RepositoryNote) {
 	hn := &HandlerNote{
 		router: router,
-		repository: repository,
+		repositoryNote: repositoryNote,
 	}	
 	noteGr := hn.router.Group("/note")
 	noteGr.Get("/add", hn.addNote)
+	noteGr.Get("/getAlljson", hn.getAlljson)
 
 	noteGr.Post("/", hn.fromform)
 
 }
+
 
 func (hn *HandlerNote) addNote(c *fiber.Ctx) error {
 	component := widgets.NoteAddForm()
@@ -76,7 +78,7 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 		&validators.StringIsPresent{Name: "Дата", Field: c.FormValue("byDate"), Message: "filling error (некорректный ввод)"},
 	)
 
-	fmt.Println("HandlerNote#add- err ",form.Task,form.Category, form.Priority, form.Description, form.ByDate)
+	//fmt.Println("HandlerNote#add- fields ",form.Task,form.Category, form.Priority, form.Description, form.ByDate)
 
 	// sleep -> form class "htmx-request"
 	time.Sleep(time.Second * 1)
@@ -86,7 +88,7 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 		return templadapter.Render(c, component,http.StatusBadRequest)
 	}
 
-	err = hn.repository.addNote(form)
+	err = hn.repositoryNote.addNote(form)
 	if err != nil {
 		component = components.Notification("Ошибка при сохранении заметки", components.NOTIFICATION_FAIL)
 		fmt.Println("HandlerNote#add- err from repo")
@@ -97,4 +99,13 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 	
 
 	//return c.SendString("HandlerNote")	
+}
+
+
+func (hn *HandlerNote) getAlljson(c *fiber.Ctx) error {
+	notes, err := hn.repositoryNote.GetAll()
+	if err !=nil {
+		fmt.Printf("HandlerNote#getAlljson- from repo %v\n",err)
+	}
+	return c.JSON(notes)
 }

@@ -32,7 +32,7 @@ func main(){
 	repoNote := note.NewRepositoryNote(dbpool)
 	
 	//Handlers
-	home.NewHandlerHome(app)
+	home.NewHandlerHome(app, repoNote)
 	note.NewHandlerNote(app,repoNote)
 	
 	app.Listen("localhost:3031")

@@ -1,4 +1,11 @@
---tasks
+UPDATE note
+SET readydat = '0001-01-01'
+WHERE id = 3
+
+-- err
+ALTER TABLE note
+ALTER COLUMN readydat SET DEFAULT '0001-01-01'
+
 --
 
 ALTER TABLE alarm
@@ -11,6 +18,10 @@ ADD COLUMN readydat TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
 ALTER TABLE tasks
 ADD COLUMN priority INT DEFAULT 4;
+
+UPDATE note
+SET readydat = '0001-01-01'
+WHERE readydat = null;
 
 
 CREATE TABLE tasks (

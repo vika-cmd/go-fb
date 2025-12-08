@@ -7,19 +7,23 @@ import (
 	//"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/a-h/templ"
 
+	"app/go-fb/internal/note"
 	"app/go-fb/views"
 	//"app/go-fb/views/components"
-	"app/go-fb/pkg/templadapter"
+	"app/go-fb/pkg/templadapter"	
 )
 
 type HandlerHome struct {
 	router fiber.Router
+	repositoryNote *note.RepositoryNote
 }
 
-func NewHandlerHome(router fiber.Router) {
+func NewHandlerHome(router fiber.Router, repositoryNote *note.RepositoryNote) {
 	hn := &HandlerHome{
 		router: router,
+		repositoryNote: repositoryNote,
 	}	
 /* 	api := hn.router.Group("/api")
 	api.Get("/", hn.home)
@@ -35,9 +39,15 @@ func NewHandlerHome(router fiber.Router) {
 } */
 
 func (hn *HandlerHome) home(c *fiber.Ctx) error {
-	fmt.Println("HandlerHome#home")
+	var component templ.Component
+	notes, err := hn.repositoryNote.GetAll()
+	if err !=nil {
+		fmt.Printf("HandlerHome#home-notes from repo %v\n",err)
+		c.SendStatus(500)
+	}
+	
 	//component := components.Title(components.TitleProps{Message: "HandlerHome#h"})
-	component := views.MainPage()
+	component = views.MainPage(notes)
 	//component.Render(context.Background(), os.Stdout) //cod in consol
 	//return c.SendString("HandlerHome#home") //page
 

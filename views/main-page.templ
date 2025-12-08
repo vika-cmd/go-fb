@@ -2,11 +2,13 @@ package views
 
 import(
     "app/go-fb/views/components"
+    "app/go-fb/views/entitypages"
    // "app/go-fb/views/widgets"
     "app/go-fb/views/layout"
+    "app/go-fb/internal/note"
 )
 
-templ MainPage() {
+templ MainPage(notes []note.ModelNoteDb) {
     @layout.Layout(layout.LayoutProps{Title: "Заметки",MetaDescription: "Сайт для заметок"}){
         
         <main class="main-page">
@@ -14,12 +16,28 @@ templ MainPage() {
         @layout.Header(){
             @components.Title(components.TitleProps{Message: "All Tasks"})        
         }
+        <div id="res-getalljson-note"></div>
+        
+        <div>
+            for _,nt := range notes {
+                @entitypages.NoteCard(entitypages.NoteCardProps{
+                    Task: nt.Task,
+                    Category: nt.Category,
+                    Priority: nt.Priority,
+                    Description: nt.Description,
+                    ByDate: nt.ByDate,
+                    Createdat: nt.Createdat,
+                    Readydat: nt.Readydat,
+                })
+            }
+        </div>
+       // @entitypages.NoteCard("asdfadfgasdfg")
 /*         <div class="main-submit-form"> 
             @widgets.NoteAddForm()
         </div> */
 
         <div id="res-add-note"></div>
-        ff</main>
+        </main>
     }
 
 

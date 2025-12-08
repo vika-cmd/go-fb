@@ -22,6 +22,12 @@ templ Menu() {
         <div  class="menu__alarm">
             <a class="menu__alarm-link" href="#">Alarm</a>
         </div>
+        <div  class="menu__contact">
+            <button 
+            hx-get="/note/getAlljson"
+            hx-target="#res-getalljson-note"
+            > GetAllJSON</button>
+        </div>
 
         <div class="menu__contact">
         <button hx-get="/contact"            

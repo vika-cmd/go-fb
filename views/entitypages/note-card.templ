@@ -1,0 +1,59 @@
+package entitypages
+
+import(
+    "time"
+   // "app/go-fb/internal/note"
+)
+
+type NoteCardProps struct{    
+    Task        string
+    Category    string
+    Priority    int
+    Description string
+    ByDate      time.Time
+    Createdat  	time.Time
+    Readydat 	time.Time
+}
+
+templ NoteCard(props NoteCardProps){
+	@NoteCardStyle()
+    <div class="note-card">
+        <div>
+            <span class="note-card__task">{props.Task}</span>
+        </div>
+        <div class="note-card__task">{props.Category}</div>
+        <div class="note-card__task">{props.Priority}</div>
+        <div class="note-card__footer">{props.Description}</div>
+        <div class="note-card__footer">{props.ByDate.String()}</div>
+        <div class="note-card__footer">{props.Createdat.String()}</div>
+        <div class="note-card__footer">{props.Readydat.String()}</div>
+    </div>
+}
+
+templ NoteCardStyle(){
+    <style>
+    .note-card{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 20px;
+/*         display: flex;
+        flex-direction: column;
+        box-sizing:  0px 3px 8px 0px rgba(17, 16, 16, .4);
+        padding: 2px 3px 2px 3px;
+        gap: 10px;
+        background: rgb(17, 16, 16);
+        color: var(--color-yelous); */
+    }
+    .note-card__task{
+        border-radius: 5px;
+/*         background: rgb(214, 188, 188);
+        color: rgb(189, 35, 35); */
+        padding: 2px 3px 2px 3px;
+    }
+    .note-card__footer{
+/*         display: flex;
+        align-items: center;
+        justify-content: center; */
+    }
+    </style>	
+}
