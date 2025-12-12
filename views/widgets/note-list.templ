@@ -1,0 +1,35 @@
+package widgets
+
+import(
+    "app/go-fb/views/entitypages"
+    "app/go-fb/internal/note"
+)
+
+templ NoteList(models []note.ModelNoteDb) {
+    @NoteListStyle()
+    <div class="note-list">
+        for _,nt := range models {
+            @entitypages.NoteCard(entitypages.NoteCardProps{
+                Task: nt.Task,
+                Category: nt.Category,
+                Priority: nt.Priority,
+                Description: nt.Description,
+                ByDate: nt.ByDate,
+                Createdat: nt.Createdat,
+                Readydat: nt.Readydat,
+            })
+        }
+    </div>
+    
+}
+
+templ NoteListStyle() {
+    <style>    
+        .note-list{
+            background: rgb(52, 56, 56);
+            padding: 10px 5px 10px 5px;
+        }
+    </style>
+
+}
+

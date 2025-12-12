@@ -2,6 +2,7 @@ package entitypages
 
 import(
     "time"
+    "github.com/rvflash/elapsed"
    // "app/go-fb/internal/note"
 )
 
@@ -18,19 +19,39 @@ type NoteCardProps struct{
 //<div class="note-card__footer">{props.Readydat.String()}</div>
 templ NoteCard(props NoteCardProps){
     {{byDateDT := props.ByDate.Format("2006-01-02")}}
+/*     {{byDateDTdet := elapsed.LocalTime(props.ByDate, "ru")}} */
+
     {{createdatDT := props.Createdat.Format("2006-01-02")}}
+    {{createdatDTdet := elapsed.LocalTime(props.Createdat, "ru")}}
+
     {{readydatDT := props.Readydat.Format("2006-01-02")}}
 	@NoteCardStyle()
     <div class="note-card">
         <div>
-            <span class="note-card__task">{props.Task}</span>
+            <span class="note-card__task fld">Задача:</span>
         </div>
-        <div class="note-card__task">{props.Category}</div>
-        <div class="note-card__task">{props.Priority}</div>
-        <div class="note-card__footer">{props.Description}</div>
-        <div class="note-card__footer">{byDateDT}</div>
-        <div class="note-card__footer">{createdatDT}</div>
-        <div class="note-card__footer">{readydatDT}</div>
+        <div>
+            <span class="note-card__task val">{props.Task}</span>
+        </div>
+        <div>
+            <span class="note-card__task fld">Категория:</span>
+        </div>        
+        <div class="note-card__task val">{props.Category}</div>
+
+        <div class="note-card__task fld">Приоритет: </div>
+        <div class="note-card__task val">{props.Priority}</div>
+
+        <div class="note-card__task fld">Описание: </div>
+        <div class="note-card__task val">{props.Description}</div>
+
+        <div class="note-card__task fld">К дате: </div>
+        <div class="note-card__task val">{byDateDT}</div>
+
+        <div class="note-card__task fld">Дата создания: </div>
+        <div class="note-card__task val">{createdatDT} ({createdatDTdet})</div>
+
+        <div class="note-card__task fld">Дата выполнения: </div>
+        <div class="note-card__task val">{readydatDT}</div>
     </div>
 }
 
@@ -38,21 +59,43 @@ templ NoteCardStyle(){
     <style>
     .note-card{
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px 20px;
+        grid-template-columns: 1fr 2fr;
+        width: 80%;
+        color: rgb(206, 244, 213);
+
+        border-style: solid;
+        border-color: rgb(189, 253, 204);
+        border-radius: 20px;
+        border-width: .1px;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        /* margin-top: 10px; */
+        margin-bottom: 8px; 
+       
+        background: rgb(50, 54, 54);
+        gap: 20px;
+        padding: 10px 20px 10px 20px;
 /*         display: flex;
         flex-direction: column;
         box-sizing:  0px 3px 8px 0px rgba(17, 16, 16, .4);
         padding: 2px 3px 2px 3px;
-        gap: 10px;
-        background: rgb(17, 16, 16);
-        color: var(--color-yelous); */
+        gap: 10px;*/ 
+    }
+    .fld{       
+        /* font-size: medium; */
+       
+    }
+    .val{
+        /* font-size: larger;  */ 
+        
     }
     .note-card__task{
         border-radius: 5px;
-/*         background: rgb(214, 188, 188);
-        color: rgb(189, 35, 35); */
-        padding: 2px 3px 2px 3px;
+        background: rgb(51, 55, 55);
+        margin: 2px 3px 2px 3px;
+       /*  color: rgb(189, 35, 35); */
+        padding: 6px 8px 6px 8px;
     }
     .note-card__footer{
 /*         display: flex;

@@ -48,7 +48,7 @@ func (r *RepositoryNote) addNote(form ModelNoteForm) error{
 // COALESCE(date_column, '0001-01-01'::date)
 //	query := `SELECT id, task, category, priority, description, bydate, createdat, COALESCE(readydat, '0001-01-01'::date) FROM note`
 func (r *RepositoryNote) GetAll() ([]ModelNoteDb,error) {
-	query := "SELECT * FROM note"
+	query := "SELECT * FROM note ORDER BY bydate"
 	rows, err := r.Dbpool.Query(context.Background(),query)
 	
 	if err != nil {

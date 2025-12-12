@@ -2,13 +2,13 @@ package views
 
 import(
     "app/go-fb/views/components"
-    "app/go-fb/views/entitypages"
-   // "app/go-fb/views/widgets"
+    //"app/go-fb/views/entitypages"
+    "app/go-fb/views/widgets"
     "app/go-fb/views/layout"
     "app/go-fb/internal/note"
 )
 
-templ MainPage(notes []note.ModelNoteDb) {
+templ MainPage(models []note.ModelNoteDb) {
     @layout.Layout(layout.LayoutProps{Title: "Заметки",MetaDescription: "Сайт для заметок"}){
         
         <main class="main-page">
@@ -19,7 +19,8 @@ templ MainPage(notes []note.ModelNoteDb) {
         <div id="res-getalljson-note"></div>
         
         <div>
-            for _,nt := range notes {
+        @widgets.NoteList(models)
+/*             for _,nt := range notes {
                 @entitypages.NoteCard(entitypages.NoteCardProps{
                     Task: nt.Task,
                     Category: nt.Category,
@@ -29,8 +30,10 @@ templ MainPage(notes []note.ModelNoteDb) {
                     Createdat: nt.Createdat,
                     Readydat: nt.Readydat,
                 })
-            }
+            } */
         </div>
+
+
        // @entitypages.NoteCard("asdfadfgasdfg")
 /*         <div class="main-submit-form"> 
             @widgets.NoteAddForm()
@@ -46,7 +49,8 @@ templ MainPage(notes []note.ModelNoteDb) {
 templ MainPageStyle() {
    <style>
         .main-page{
-            background: rgb(200,200,200);
+            /* background: rgb(200,200,200); */
+            background: rgb(29, 32, 30);
         }
 /*         .main-submit-form{
             background: rgb(33, 25, 25); 

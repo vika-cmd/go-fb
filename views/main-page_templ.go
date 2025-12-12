@@ -10,13 +10,13 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"app/go-fb/views/components"
-	"app/go-fb/views/entitypages"
-	// "app/go-fb/views/widgets"
+	//"app/go-fb/views/entitypages"
 	"app/go-fb/internal/note"
 	"app/go-fb/views/layout"
+	"app/go-fb/views/widgets"
 )
 
-func MainPage(notes []note.ModelNoteDb) templ.Component {
+func MainPage(models []note.ModelNoteDb) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -83,19 +83,9 @@ func MainPage(notes []note.ModelNoteDb) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for _, nt := range notes {
-				templ_7745c5c3_Err = entitypages.NoteCard(entitypages.NoteCardProps{
-					Task:        nt.Task,
-					Category:    nt.Category,
-					Priority:    nt.Priority,
-					Description: nt.Description,
-					ByDate:      nt.ByDate,
-					Createdat:   nt.Createdat,
-					Readydat:    nt.Readydat,
-				}).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
+			templ_7745c5c3_Err = widgets.NoteList(models).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><div id=\"res-add-note\"></div></main>")
 			if templ_7745c5c3_Err != nil {
@@ -132,7 +122,7 @@ func MainPageStyle() templ.Component {
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n        .main-page{\r\n            background: rgb(200,200,200);\r\n        }\r\n/*         .main-submit-form{\r\n            background: rgb(33, 25, 25); \r\n        } */\r\n        #res-add-note{\r\n            background: rgb(33, 25, 25);\r\n        }\r\n   </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n        .main-page{\r\n            /* background: rgb(200,200,200); */\r\n            background: rgb(29, 32, 30);\r\n        }\r\n/*         .main-submit-form{\r\n            background: rgb(33, 25, 25); \r\n        } */\r\n        #res-add-note{\r\n            background: rgb(33, 25, 25);\r\n        }\r\n   </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

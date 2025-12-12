@@ -17,7 +17,7 @@ import (
 	"app/go-fb/pkg/templadapter"
 	"app/go-fb/pkg/validator"
 	"app/go-fb/views/components"
-	"app/go-fb/views/widgets"
+	"app/go-fb/views/entitypages"
 )
 
 
@@ -41,7 +41,7 @@ func NewHandlerNote(router fiber.Router, repositoryNote *RepositoryNote) {
 
 
 func (hn *HandlerNote) addNote(c *fiber.Ctx) error {
-	component := widgets.NoteAddForm()
+	component := entitypages.NoteAddForm()
 	return templadapter.Render(c, component,200)
 }
 
