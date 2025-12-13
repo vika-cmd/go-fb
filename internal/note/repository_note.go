@@ -47,9 +47,13 @@ func (r *RepositoryNote) addNote(form ModelNoteForm) error{
 
 // COALESCE(date_column, '0001-01-01'::date)
 //	query := `SELECT id, task, category, priority, description, bydate, createdat, COALESCE(readydat, '0001-01-01'::date) FROM note`
-func (r *RepositoryNote) GetAll() ([]ModelNoteDb,error) {
-	query := "SELECT * FROM note ORDER BY bydate"
-	rows, err := r.Dbpool.Query(context.Background(),query)
+func (r *RepositoryNote) GetAll(limit, offset int) ([]ModelNoteDb,error) {
+	query := `SELECT * FROM note ORDER BY bydate LIMIT @limit OFFSET @offset`
+	args := pgx.NamedArgs{
+		"limit": limit,
+		"offset": offset,
+	}
+	rows, err := r.Dbpool.Query(context.Background(), query, args)
 	
 	if err != nil {
 		fmt.Printf("repo#GetAll: query - err: %v\n",err)
@@ -93,23 +97,3 @@ func (r *RepositoryNote) GetAll() ([]ModelNoteDb,error) {
 	r.Dbpool.QueryRow(context.Background(), query).Scan(&count)
 	return count
 } */
-
-	
-
-
-/* func (r *RepositoryNote) GetAll(limit, offset int) ([]TodoDB, error ){
-	query := `SELECT * FROM tasks ORDER BY createdat LIMIT @limit OFFSET @offset`
-	args := pgx.NamedArgs{
-		"limit": limit,
-		"offset": offset,
-	}
-
-	rows, err := r.Dbpool.Query(context.Background(), query, args)
-	if err != nil {
-		return nil, err
-	} */
-
-
-	 
-
-

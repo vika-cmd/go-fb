@@ -103,7 +103,11 @@ func (hn *HandlerNote) fromform(c *fiber.Ctx) error {
 
 
 func (hn *HandlerNote) getAlljson(c *fiber.Ctx) error {
-	notes, err := hn.repositoryNote.GetAll()
+	//NUMBER_ITEMS := 2
+	QUANTITY_ON_PAGE := 2 //limit
+	page := c.QueryInt("page", 1) //default 1, page-1 -first
+	quantityOfNotes := QUANTITY_ON_PAGE * (page - 1)// all notes
+	notes, err := hn.repositoryNote.GetAll(QUANTITY_ON_PAGE, quantityOfNotes)
 	if err !=nil {
 		fmt.Printf("HandlerNote#getAlljson- from repo %v\n",err)
 	}

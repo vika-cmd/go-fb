@@ -40,7 +40,11 @@ func NewHandlerHome(router fiber.Router, repositoryNote *note.RepositoryNote) {
 
 func (hn *HandlerHome) home(c *fiber.Ctx) error {
 	var component templ.Component
-	notes, err := hn.repositoryNote.GetAll()
+	QUANTITY_ON_PAGE := 2 //limit
+	page := c.QueryInt("page", 1) //default 1, page-1 -first
+	//http://localhost:3031/?page=2
+	quantityOfNotes := QUANTITY_ON_PAGE * (page - 1)// all notes
+	notes, err := hn.repositoryNote.GetAll(QUANTITY_ON_PAGE, quantityOfNotes)
 	if err !=nil {
 		fmt.Printf("HandlerHome#home-notes from repo %v\n",err)
 		c.SendStatus(500)
