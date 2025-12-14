@@ -3,10 +3,11 @@ package entitypages
 import(
     "time"
     "github.com/rvflash/elapsed"
-   // "app/go-fb/internal/note"
+    "app/go-fb/views/components"
 )
 
-type NoteCardProps struct{    
+type NoteCardProps struct{
+    Id int
     Task        string
     Category    string
     Priority    int
@@ -27,31 +28,48 @@ templ NoteCard(props NoteCardProps){
     {{readydatDT := props.Readydat.Format("2006-01-02")}}
 	@NoteCardStyle()
     <div class="note-card">
-        <div>
-            <span class="note-card__task fld">Задача:</span>
+        <div class="note-card__task">
+            <div class="note-card__task fld">Задача: </div>        
+            <div class="note-card__task val">{props.Task}</div>
+
+            <div class="note-card__task fld">Категория: </div>        
+            <div class="note-card__task val">{props.Category}</div>
+
+            <div class="note-card__task fld">Приоритет: </div>
+            <div class="note-card__task val">{props.Priority}</div>
+
+            <div class="note-card__task fld">Описание: </div>
+            <div class="note-card__task val">{props.Description}</div>
+
+            <div class="note-card__task fld">К дате: </div>
+            <div class="note-card__task val">{byDateDT}</div>
+
+            <div class="note-card__task fld">Дата создания: </div>
+            <div class="note-card__task val">{createdatDT} ({createdatDTdet})</div>
+
+            <div class="note-card__task fld">Дата выполнения: </div>
+            <div class="note-card__task val">{readydatDT}</div>
+
+/*             @components.Input(components.InputProps{Placeholder: "Тема", Name: "task", Type: "text"}) */
         </div>
-        <div>
-            <span class="note-card__task val">{props.Task}</span>
+
+        <div class="note-card__panel">
+            <form>
+                <input type="hidden" name="nmready" value={props.Id}/>
+                <button
+                    class="note-card__btn"
+                    hx-post="/note/ready"
+                    hx-trigger="click"
+                    hx-target=".res-note-card-form"                     
+                >Выполнено
+                </button>
+            </form>
+
+
+            @components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "Редактировать"})
+            @components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "Удалить"})
         </div>
-        <div>
-            <span class="note-card__task fld">Категория:</span>
-        </div>        
-        <div class="note-card__task val">{props.Category}</div>
-
-        <div class="note-card__task fld">Приоритет: </div>
-        <div class="note-card__task val">{props.Priority}</div>
-
-        <div class="note-card__task fld">Описание: </div>
-        <div class="note-card__task val">{props.Description}</div>
-
-        <div class="note-card__task fld">К дате: </div>
-        <div class="note-card__task val">{byDateDT}</div>
-
-        <div class="note-card__task fld">Дата создания: </div>
-        <div class="note-card__task val">{createdatDT} ({createdatDTdet})</div>
-
-        <div class="note-card__task fld">Дата выполнения: </div>
-        <div class="note-card__task val">{readydatDT}</div>
+        <div class="res-note-card-form"></div>
     </div>
 }
 
@@ -59,7 +77,7 @@ templ NoteCardStyle(){
     <style>
     .note-card{
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 3fr 1fr;
         width: 80%;
         border-style: solid;
         border-color: rgb(189, 253, 204);
@@ -72,6 +90,16 @@ templ NoteCardStyle(){
         background: rgb(50, 54, 54);
         padding: 5px 5px 5px 5px;
     }
+    .note-card__task{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        border-radius: 5px;
+        background: rgb(51, 55, 55);
+        margin: 3px 8px 3px 15px ; 
+       /*  color: rgb(189, 35, 35); */
+        padding: 2px 3px 2px 3px;
+    }
     .fld{       
         /* font-size: medium; */
         color: rgba(206, 244, 213, 0.6);       
@@ -80,12 +108,10 @@ templ NoteCardStyle(){
         /* font-size: larger;  */ 
         color: rgba(190, 245, 200, 0.9);
     }
-    .note-card__task{
-        border-radius: 5px;
-        background: rgb(51, 55, 55);
-        margin: 3px 8px 3px 15px ; 
-       /*  color: rgb(189, 35, 35); */
-        padding: 2px 3px 2px 3px;
+
+    .note-card__panel{
+        background: rgb(67, 118, 118);
+        align-items: center;
     }
     .note-card__footer{
 /*         display: flex;
@@ -94,5 +120,22 @@ templ NoteCardStyle(){
         padding: 2px 3px 2px 3px;
         gap: 10px;*/ 
     }
+    .note-card__btn{               
+        padding: 10px 20px 10px 20px;
+        margin: 10px 15px 10px 15px;
+        border-radius: 8px;
+        /* border: none; */
+        background: rgb(74, 75, 79);
+        color: rgb(227, 225, 174);
+        border: 1px solid rgb(121, 120, 117);
+        text-decoration: none;
+        text-align: center;
+        /*align-items: center;*/
+        justify-items: baseline;
+    }
+    .note-card__btn:hover{
+        background: rgb(49, 50, 54);
+    }
+    
     </style>	
 }

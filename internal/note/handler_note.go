@@ -17,7 +17,7 @@ import (
 	"app/go-fb/pkg/templadapter"
 	"app/go-fb/pkg/validator"
 	"app/go-fb/views/components"
-	"app/go-fb/views/entitypages"
+	//"app/go-fb/views/entitypages"
 )
 
 
@@ -33,16 +33,27 @@ func NewHandlerNote(router fiber.Router, repositoryNote *RepositoryNote) {
 	}	
 	noteGr := hn.router.Group("/note")
 	noteGr.Get("/add", hn.addNote)
+	noteGr.Post("/ready", hn.ready)
 	noteGr.Get("/getAlljson", hn.getAlljson)
 
 	noteGr.Post("/", hn.fromform)
 
 }
 
+func (hn *HandlerNote) ready(c *fiber.Ctx) error {
+	//fmt.Println("HandlerNote#ready")
+	noteId := c.FormValue("nmready")
+	fmt.Println("HandlerNote#ready: noteId", noteId)
+	component := components.Notification("Выполнено", components.NOTIFICATION_SUCCESS)
+	return templadapter.Render(c, component, http.StatusOK)
+}
+
+
 
 func (hn *HandlerNote) addNote(c *fiber.Ctx) error {
-	component := entitypages.NoteAddForm()
-	return templadapter.Render(c, component,200)
+
+	component := components.Notification("Ok", components.NOTIFICATION_SUCCESS)
+	return templadapter.Render(c, component, http.StatusOK)
 }
 
 func (hn *HandlerNote) fromform(c *fiber.Ctx) error {

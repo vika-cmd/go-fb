@@ -48,6 +48,7 @@ func NoteList(models []note.ModelNoteDb, quantityOfPages int, page int) templ.Co
 		}
 		for _, nt := range models {
 			templ_7745c5c3_Err = entitypages.NoteCard(entitypages.NoteCardProps{
+				Id:          nt.Id,
 				Task:        nt.Task,
 				Category:    nt.Category,
 				Priority:    nt.Priority,
@@ -72,7 +73,7 @@ func NoteList(models []note.ModelNoteDb, quantityOfPages int, page int) templ.Co
 			var templ_7745c5c3_Var2 templ.SafeURL
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(fmt.Sprintf("/?page=%d", page-1)))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/widgets/note-list.templ`, Line: 28, Col: 106}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/widgets/note-list.templ`, Line: 29, Col: 106}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -95,7 +96,7 @@ func NoteList(models []note.ModelNoteDb, quantityOfPages int, page int) templ.Co
 			var templ_7745c5c3_Var3 templ.SafeURL
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(fmt.Sprintf("/?page=%d", page+1)))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/widgets/note-list.templ`, Line: 33, Col: 106}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/widgets/note-list.templ`, Line: 34, Col: 106}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {

@@ -12,6 +12,7 @@ templ NoteList(models []note.ModelNoteDb,  quantityOfPages int, page int) {
     <div class="note-list">
         for _,nt := range models {
             @entitypages.NoteCard(entitypages.NoteCardProps{
+                Id: nt.Id,
                 Task: nt.Task,
                 Category: nt.Category,
                 Priority: nt.Priority,
