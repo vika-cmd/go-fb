@@ -3,9 +3,11 @@ package widgets
 import(
     "app/go-fb/views/entitypages"
     "app/go-fb/internal/note"
+    "fmt"
+   // "github.com/a-h/templ"
 )
-
-templ NoteList(models []note.ModelNoteDb) {
+/* http://localhost:3031/?page=2     pageFromUrl*/
+templ NoteList(models []note.ModelNoteDb,  quantityOfPages int, page int) {
     @NoteListStyle()
     <div class="note-list">
         for _,nt := range models {
@@ -19,7 +21,20 @@ templ NoteList(models []note.ModelNoteDb) {
                 Readydat: nt.Readydat,
             })
         }
+   
+    <div class="note-list__pagination">
+        <div>
+            if page != 1 {
+                <a class="note-list__pagination-a" href={templ.SafeURL(fmt.Sprintf("/?page=%d", page - 1))}>Назад</a>
+            }
+        </div>
+        <div>
+            if page != quantityOfPages {
+                <a class="note-list__pagination-a" href={templ.SafeURL(fmt.Sprintf("/?page=%d", page + 1))}>Вперед</a>
+            } 
+        </div>   
     </div>
+     </div>
     
 }
 
@@ -27,7 +42,41 @@ templ NoteListStyle() {
     <style>    
         .note-list{
             background: rgb(52, 56, 56);
-            padding: 10px 5px 10px 5px;
+            padding: 2px 2px 2px 2px;
+            margin-bottom: 1px;
+        }
+        .note-list__pagination{
+            display: flex;
+            justify-content: space-between;
+            margin-left: 100px; /* auto; */
+            margin-right: 100px; /* auto; */            
+        }
+
+        .note-list__pagination-a{
+            display: flex;
+            /* justify-content: space-between; */
+            color: rgb(231, 250, 212);
+            background: rgb(91, 95, 87);
+            border-radius: 10px;
+            border: 1px solid rgb(203, 223, 181);
+
+            text-decoration: none;
+            padding: 10px 20px 10px 20px;
+            margin: 10px 20px 10px 20px;
+            align-items: center;
+        }
+        .note-list__pagination-a :hover{
+            display: flex;
+            /* justify-content: space-between; */
+            color: rgb(231, 250, 212);
+            background: rgb(99, 106, 92);
+            border-radius: 10px;
+            border: 1px solid rgb(203, 223, 181);
+
+            text-decoration: none;
+            padding: 10px 20px 10px 20px;
+            margin: 10px 20px 10px 20px;
+            align-items: center;
         }
     </style>
 

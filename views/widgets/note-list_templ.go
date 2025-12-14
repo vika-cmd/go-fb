@@ -11,9 +11,13 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"app/go-fb/internal/note"
 	"app/go-fb/views/entitypages"
+	"fmt"
+	// "github.com/a-h/templ"
 )
 
-func NoteList(models []note.ModelNoteDb) templ.Component {
+/* http://localhost:3031/?page=2     pageFromUrl*/
+
+func NoteList(models []note.ModelNoteDb, quantityOfPages int, page int) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -56,7 +60,53 @@ func NoteList(models []note.ModelNoteDb) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"note-list__pagination\"><div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if page != 1 {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<a class=\"note-list__pagination-a\" href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var2 templ.SafeURL
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(fmt.Sprintf("/?page=%d", page-1)))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/widgets/note-list.templ`, Line: 28, Col: 106}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\">Назад</a>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div><div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if page != quantityOfPages {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<a class=\"note-list__pagination-a\" href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 templ.SafeURL
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(fmt.Sprintf("/?page=%d", page+1)))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/widgets/note-list.templ`, Line: 33, Col: 106}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\">Вперед</a>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -80,12 +130,12 @@ func NoteListStyle() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var2 == nil {
-			templ_7745c5c3_Var2 = templ.NopComponent
+		templ_7745c5c3_Var4 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var4 == nil {
+			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<style>    \r\n        .note-list{\r\n            background: rgb(52, 56, 56);\r\n            padding: 10px 5px 10px 5px;\r\n        }\r\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<style>    \r\n        .note-list{\r\n            background: rgb(52, 56, 56);\r\n            padding: 2px 2px 2px 2px;\r\n            margin-bottom: 1px;\r\n        }\r\n        .note-list__pagination{\r\n            display: flex;\r\n            justify-content: space-between;\r\n            margin-left: 100px; /* auto; */\r\n            margin-right: 100px; /* auto; */            \r\n        }\r\n\r\n        .note-list__pagination-a{\r\n            display: flex;\r\n            /* justify-content: space-between; */\r\n            color: rgb(231, 250, 212);\r\n            background: rgb(91, 95, 87);\r\n            border-radius: 10px;\r\n            border: 1px solid rgb(203, 223, 181);\r\n\r\n            text-decoration: none;\r\n            padding: 10px 20px 10px 20px;\r\n            margin: 10px 20px 10px 20px;\r\n            align-items: center;\r\n        }\r\n        .note-list__pagination-a :hover{\r\n            display: flex;\r\n            /* justify-content: space-between; */\r\n            color: rgb(231, 250, 212);\r\n            background: rgb(99, 106, 92);\r\n            border-radius: 10px;\r\n            border: 1px solid rgb(203, 223, 181);\r\n\r\n            text-decoration: none;\r\n            padding: 10px 20px 10px 20px;\r\n            margin: 10px 20px 10px 20px;\r\n            align-items: center;\r\n        }\r\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

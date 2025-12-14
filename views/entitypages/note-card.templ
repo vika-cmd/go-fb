@@ -61,8 +61,6 @@ templ NoteCardStyle(){
         display: grid;
         grid-template-columns: 1fr 2fr;
         width: 80%;
-        color: rgb(206, 244, 213);
-
         border-style: solid;
         border-color: rgb(189, 253, 204);
         border-radius: 20px;
@@ -70,37 +68,31 @@ templ NoteCardStyle(){
         align-items: center;
         margin-left: auto;
         margin-right: auto;
-        /* margin-top: 10px; */
-        margin-bottom: 8px; 
-       
+        margin-top: 10px;       
         background: rgb(50, 54, 54);
-        gap: 20px;
-        padding: 10px 20px 10px 20px;
+        padding: 5px 5px 5px 5px;
+    }
+    .fld{       
+        /* font-size: medium; */
+        color: rgba(206, 244, 213, 0.6);       
+    }
+    .val{
+        /* font-size: larger;  */ 
+        color: rgba(190, 245, 200, 0.9);
+    }
+    .note-card__task{
+        border-radius: 5px;
+        background: rgb(51, 55, 55);
+        margin: 3px 8px 3px 15px ; 
+       /*  color: rgb(189, 35, 35); */
+        padding: 2px 3px 2px 3px;
+    }
+    .note-card__footer{
 /*         display: flex;
         flex-direction: column;
         box-sizing:  0px 3px 8px 0px rgba(17, 16, 16, .4);
         padding: 2px 3px 2px 3px;
         gap: 10px;*/ 
-    }
-    .fld{       
-        /* font-size: medium; */
-       
-    }
-    .val{
-        /* font-size: larger;  */ 
-        
-    }
-    .note-card__task{
-        border-radius: 5px;
-        background: rgb(51, 55, 55);
-        margin: 2px 3px 2px 3px;
-       /*  color: rgb(189, 35, 35); */
-        padding: 6px 8px 6px 8px;
-    }
-    .note-card__footer{
-/*         display: flex;
-        align-items: center;
-        justify-content: center; */
     }
     </style>	
 }

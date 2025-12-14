@@ -2,17 +2,19 @@ package home
 
 import (
 	//"context"
-	"fmt"
+	"fmt"	
 	"net/http"
+
 	//"os"
 
-	"github.com/gofiber/fiber/v2"
 	"github.com/a-h/templ"
+	"github.com/gofiber/fiber/v2"
 
 	"app/go-fb/internal/note"
 	"app/go-fb/views"
+	"app/go-fb/pkg/templadapter"
 	//"app/go-fb/views/components"
-	"app/go-fb/pkg/templadapter"	
+	"app/go-fb/hlp"
 )
 
 type HandlerHome struct {
@@ -38,20 +40,25 @@ func NewHandlerHome(router fiber.Router, repositoryNote *note.RepositoryNote) {
 	return c.Redirect(redir, 200)
 } */
 
+//LIMIT 20 OFFSET 40 вернет 20 записей, начиная с 41-й
+//http://localhost:3031/?page=2
 func (hn *HandlerHome) home(c *fiber.Ctx) error {
 	var component templ.Component
-	QUANTITY_ON_PAGE := 2 //limit
-	page := c.QueryInt("page", 1) //default 1, page-1 -first
-	//http://localhost:3031/?page=2
-	quantityOfNotes := QUANTITY_ON_PAGE * (page - 1)// all notes
-	notes, err := hn.repositoryNote.GetAll(QUANTITY_ON_PAGE, quantityOfNotes)
+	LIMIT := 2 //on page
+	pageFromUrl := c.QueryInt("page", 1) //currentPage   default 1, page-1 -first   1	
+	offset := LIMIT * (pageFromUrl - 1)//skip   0	
+	notes, err := hn.repositoryNote.GetAll(LIMIT, offset)
 	if err !=nil {
 		fmt.Printf("HandlerHome#home-notes from repo %v\n",err)
 		c.SendStatus(500)
 	}
+
+	total := hn.repositoryNote.TotalRecords()  //3	
+	quantityOfPages := hlp.DivideAndCeil(total,LIMIT) //2	
+	//fmt.Printf("HandlerHome#quantityOfPages %d\n",quantityOfPages)
 	
 	//component := components.Title(components.TitleProps{Message: "HandlerHome#h"})
-	component = views.MainPage(notes)
+	component = views.MainPage(notes,  quantityOfPages, pageFromUrl)
 	//component.Render(context.Background(), os.Stdout) //cod in consol
 	//return c.SendString("HandlerHome#home") //page
 

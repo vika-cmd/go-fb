@@ -47,6 +47,7 @@ func (r *RepositoryNote) addNote(form ModelNoteForm) error{
 
 // COALESCE(date_column, '0001-01-01'::date)
 //	query := `SELECT id, task, category, priority, description, bydate, createdat, COALESCE(readydat, '0001-01-01'::date) FROM note`
+//LIMIT 20 OFFSET 40 вернет 20 записей, начиная с 41-й
 func (r *RepositoryNote) GetAll(limit, offset int) ([]ModelNoteDb,error) {
 	query := `SELECT * FROM note ORDER BY bydate LIMIT @limit OFFSET @offset`
 	args := pgx.NamedArgs{
@@ -88,12 +89,10 @@ func (r *RepositoryNote) GetAll(limit, offset int) ([]ModelNoteDb,error) {
 	} */
 	//return arrNotes, err
 }
-	
 
-
-/* func (r *RepositoryNote) CountAll() int{
-	query := "SELECT count(*) FROM notebook"
+func (r *RepositoryNote) TotalRecords() int{
+	query := "SELECT count(*) FROM note"
 	var count int
 	r.Dbpool.QueryRow(context.Background(), query).Scan(&count)
 	return count
-} */
+}

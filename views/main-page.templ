@@ -7,8 +7,8 @@ import(
     "app/go-fb/views/layout"
     "app/go-fb/internal/note"
 )
-
-templ MainPage(models []note.ModelNoteDb) {
+//quantityOfPages int, currentPage int
+templ MainPage(models []note.ModelNoteDb,  quantityOfPages int, pageFromUrl int) {
     @layout.Layout(layout.LayoutProps{Title: "Заметки",MetaDescription: "Сайт для заметок"}){
         
         <main class="main-page">
@@ -19,7 +19,7 @@ templ MainPage(models []note.ModelNoteDb) {
         <div id="res-getalljson-note"></div>
         
         <div>
-        @widgets.NoteList(models)
+        @widgets.NoteList(models,  quantityOfPages, pageFromUrl)
 /*             for _,nt := range notes {
                 @entitypages.NoteCard(entitypages.NoteCardProps{
                     Task: nt.Task,
