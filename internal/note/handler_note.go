@@ -33,17 +33,23 @@ func NewHandlerNote(router fiber.Router, repositoryNote *RepositoryNote) {
 	}	
 	noteGr := hn.router.Group("/note")
 	noteGr.Get("/add", hn.addNote)
-	noteGr.Post("/ready", hn.ready)
+	noteGr.Post("/ready", hn.changeReady)
 	noteGr.Get("/getAlljson", hn.getAlljson)
 
 	noteGr.Post("/", hn.fromform)
 
 }
 
-func (hn *HandlerNote) ready(c *fiber.Ctx) error {
+func (hn *HandlerNote) changeReady(c *fiber.Ctx) error {
 	//fmt.Println("HandlerNote#ready")
-	noteId := c.FormValue("nmready")
+	noteIdStr := c.FormValue("nmready")
+	noteId,err := hlp.ConvStrToInt(noteIdStr)
+	if err != nil {
+		fmt.Println("HandlerNote#changeReady ConvStrToInt- error")
+	}
 	fmt.Println("HandlerNote#ready: noteId", noteId)
+	hn.repositoryNote.ReadyById(noteId)
+
 	component := components.Notification("Выполнено", components.NOTIFICATION_SUCCESS)
 	return templadapter.Render(c, component, http.StatusOK)
 }

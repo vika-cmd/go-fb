@@ -19,6 +19,7 @@ templ MainPage(models []note.ModelNoteDb,  quantityOfPages int, pageFromUrl int)
         <div id="res-getalljson-note"></div>
         
         <div>
+        <div class="res-note-card-form"></div>
         @widgets.NoteList(models,  quantityOfPages, pageFromUrl)
 /*             for _,nt := range notes {
                 @entitypages.NoteCard(entitypages.NoteCardProps{

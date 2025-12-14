@@ -24,6 +24,23 @@ SET readydat = '0001-01-01'
 WHERE readydat = null;
 
 
+
+
+UPDATE note
+SET readydat = '0001-01-01'
+WHERE id = null;
+
+
+
+DELETE FROM "tasks" WHERE id=11;
+
+ALTER TABLE tasks
+DROP COLUMN readydat;
+
+DROP TABLE alarm;
+
+-- tasks;
+
 CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
     text TEXT NOT NULL,

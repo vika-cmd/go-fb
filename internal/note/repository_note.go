@@ -96,3 +96,23 @@ func (r *RepositoryNote) TotalRecords() int{
 	r.Dbpool.QueryRow(context.Background(), query).Scan(&count)
 	return count
 }
+
+
+func (r *RepositoryNote) ReadyById(idnote int) error{
+	newDat := time.Now()
+	query := `UPDATE note SET readydat = @vreadydat WHERE id = @vid`
+	args := pgx.NamedArgs{
+		"vreadydat": newDat,
+		"vid": idnote,
+	}
+
+	_,err := r.Dbpool.Exec(context.Background(), query, args)
+	if err != nil {
+		fmt.Printf("repo#ReadyById- err - %v\n", err)
+		return err		
+	}	
+	//fmt.Printf("repo#addNote: Тип  form.ByDate: %T\n", form.ByDate)
+	//fmt.Println("repo#ReadyById: newDat: ", newDat)
+
+	return nil
+}

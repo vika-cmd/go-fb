@@ -62,7 +62,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(props.Task)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 33, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 34, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -75,7 +75,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(props.Category)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 36, Col: 60}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 37, Col: 60}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -88,7 +88,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(props.Priority)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 39, Col: 60}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 40, Col: 60}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -101,7 +101,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(props.Description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 42, Col: 63}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 43, Col: 63}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -114,7 +114,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(byDateDT)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 45, Col: 54}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 46, Col: 54}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -127,7 +127,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(createdatDT)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 48, Col: 57}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 49, Col: 57}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -140,7 +140,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(createdatDTdet)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 48, Col: 75}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 49, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -153,7 +153,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(readydatDT)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 51, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 52, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -166,30 +166,13 @@ func NoteCard(props NoteCardProps) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(props.Id)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 58, Col: 67}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 59, Col: 67}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"> <button class=\"note-card__btn\" hx-post=\"/note/ready\" hx-trigger=\"click\" hx-target=\".res-note-card-form\" hx-on::befor-request=\"alert({props.Id})\">Выполнено</button></form><div hx-post=\"/note/ready\" hx-trigger=\"click\" hx-target=\"#res-note-ready\" hx-name=\"nmready\" hx-on::after-request=\"alert({props.Id})\" hx-swap=\"outerHTML\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var11 string
-		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(props.Id)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/entitypages/note-card.templ`, Line: 82, Col: 24}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "В"}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"> <button class=\"note-card__btn\" hx-post=\"/note/ready\" hx-trigger=\"click\" hx-target=\".res-note-card-form\">Выполнено</button></form>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -201,7 +184,7 @@ func NoteCard(props NoteCardProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</div><div class=\"res-note-card-form\"></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -225,12 +208,12 @@ func NoteCardStyle() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var12 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var12 == nil {
-			templ_7745c5c3_Var12 = templ.NopComponent
+		templ_7745c5c3_Var11 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var11 == nil {
+			templ_7745c5c3_Var11 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<style>\r\n    .note-card{\r\n        display: grid;\r\n        grid-template-columns: 3fr 1fr;\r\n        width: 80%;\r\n        border-style: solid;\r\n        border-color: rgb(189, 253, 204);\r\n        border-radius: 20px;\r\n        border-width: .1px;\r\n        align-items: center;\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n        margin-top: 10px;       \r\n        background: rgb(50, 54, 54);\r\n        padding: 5px 5px 5px 5px;\r\n    }\r\n    .note-card__task{\r\n        display: grid;\r\n        grid-template-columns: 1fr 2fr;\r\n\r\n        border-radius: 5px;\r\n        background: rgb(51, 55, 55);\r\n        margin: 3px 8px 3px 15px ; \r\n       /*  color: rgb(189, 35, 35); */\r\n        padding: 2px 3px 2px 3px;\r\n    }\r\n    .fld{       \r\n        /* font-size: medium; */\r\n        color: rgba(206, 244, 213, 0.6);       \r\n    }\r\n    .val{\r\n        /* font-size: larger;  */ \r\n        color: rgba(190, 245, 200, 0.9);\r\n    }\r\n\r\n    .note-card__panel{\r\n        background: rgb(67, 118, 118);\r\n        align-items: center;\r\n    }\r\n    .note-card__footer{\r\n/*         display: flex;\r\n        flex-direction: column;\r\n        box-sizing:  0px 3px 8px 0px rgba(17, 16, 16, .4);\r\n        padding: 2px 3px 2px 3px;\r\n        gap: 10px;*/ \r\n    }\r\n    .note-card__btn{               \r\n        padding: 10px 20px 10px 20px;\r\n        margin: 10px 15px 10px 15px;\r\n        border-radius: 8px;\r\n        /* border: none; */\r\n        background: rgb(74, 75, 79);\r\n        color: rgb(227, 225, 174);\r\n        border: 1px solid rgb(121, 120, 117);\r\n        text-decoration: none;\r\n        text-align: center;\r\n        /*align-items: center;*/\r\n        justify-items: baseline;\r\n    }\r\n    .note-card__btn:hover{\r\n        background: rgb(49, 50, 54);\r\n    }\r\n    \r\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<style>\r\n    .note-card{\r\n        display: grid;\r\n        grid-template-columns: 3fr 1fr;\r\n        width: 80%;\r\n        border-style: solid;\r\n        border-color: rgb(189, 253, 204);\r\n        border-radius: 20px;\r\n        border-width: .1px;\r\n        align-items: center;\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n        margin-top: 10px;       \r\n        background: rgb(50, 54, 54);\r\n        padding: 5px 5px 5px 5px;\r\n    }\r\n    .note-card__task{\r\n        display: grid;\r\n        grid-template-columns: 1fr 2fr;\r\n\r\n        border-radius: 5px;\r\n        background: rgb(51, 55, 55);\r\n        margin: 3px 8px 3px 15px ; \r\n       /*  color: rgb(189, 35, 35); */\r\n        padding: 2px 3px 2px 3px;\r\n    }\r\n    .fld{       \r\n        /* font-size: medium; */\r\n        color: rgba(206, 244, 213, 0.6);       \r\n    }\r\n    .val{\r\n        /* font-size: larger;  */ \r\n        color: rgba(190, 245, 200, 0.9);\r\n    }\r\n\r\n    .note-card__panel{\r\n        background: rgb(67, 118, 118);\r\n        align-items: center;\r\n    }\r\n    .note-card__footer{\r\n/*         display: flex;\r\n        flex-direction: column;\r\n        box-sizing:  0px 3px 8px 0px rgba(17, 16, 16, .4);\r\n        padding: 2px 3px 2px 3px;\r\n        gap: 10px;*/ \r\n    }\r\n    .note-card__btn{               \r\n        padding: 10px 20px 10px 20px;\r\n        margin: 10px 15px 10px 15px;\r\n        border-radius: 8px;\r\n        /* border: none; */\r\n        background: rgb(74, 75, 79);\r\n        color: rgb(227, 225, 174);\r\n        border: 1px solid rgb(121, 120, 117);\r\n        text-decoration: none;\r\n        text-align: center;\r\n        /*align-items: center;*/\r\n        justify-items: baseline;\r\n    }\r\n    .note-card__btn:hover{\r\n        background: rgb(49, 50, 54);\r\n    }\r\n    \r\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

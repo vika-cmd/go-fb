@@ -28,6 +28,7 @@ templ NoteCard(props NoteCardProps){
     {{readydatDT := props.Readydat.Format("2006-01-02")}}
 	@NoteCardStyle()
     <div class="note-card">
+    
         <div class="note-card__task">
             <div class="note-card__task fld">Задача: </div>        
             <div class="note-card__task val">{props.Task}</div>
@@ -68,8 +69,9 @@ templ NoteCard(props NoteCardProps){
 
             @components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "Редактировать"})
             @components.ButtonSubmit(components.ButtonSubmitProps{TextBtn: "Удалить"})
+
         </div>
-        <div class="res-note-card-form"></div>
+        
     </div>
 }
 
